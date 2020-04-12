@@ -96,7 +96,7 @@ public class FornecedorDaoImpl implements FornecedorDao {
 	}
 
 	@Override
-	public void update(Fornecedor fornecedor) throws Exception {
+	public void update(int id, Fornecedor fornecedor) throws Exception {
 
 		try {
 			String sqlFornecedorxProdutos = "UPDATE fornecedor SET nome = ?, localizacao = ?, tipoFornecimento = ? WHERE id = ?";
@@ -105,7 +105,7 @@ public class FornecedorDaoImpl implements FornecedorDao {
 			stmt.setString(2, fornecedor.getLocalizacao());
 
 			stmt.setInt(3, fornecedor.getTipoFornecimento());
-			stmt.setInt(4, (int) fornecedor.getId());
+			stmt.setInt(4, id);
 
 			stmt = this.conn.prepareStatement(sqlFornecedorxProdutos);
 

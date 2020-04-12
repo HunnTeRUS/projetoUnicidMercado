@@ -11,7 +11,7 @@ public interface FornecedorDao {
 
 	public void delete(int id) throws Exception;
 
-	public void update(Fornecedor fornecedor) throws Exception;
+	public void update(int id, Fornecedor fornecedor) throws Exception;
 
 	public Fornecedor findById(int id) throws Exception;
 }

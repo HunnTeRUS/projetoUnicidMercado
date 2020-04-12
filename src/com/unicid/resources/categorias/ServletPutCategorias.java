@@ -29,9 +29,10 @@ public class ServletPutCategorias extends HttpServlet {
             Categoria categoria = new Categoria();
             CategoriaDaoImpl dao = new CategoriaDaoImpl();
 
+            int id = Integer.parseInt(request.getParameter("id"));
             categoria.setNome(request.getParameter("nome"));
 
-            dao.update(categoria);
+            dao.update(id, categoria);
 
             request.setAttribute("mensagem", "Categoria " + request.getParameter("nome") + " alterada com sucesso!");
             RequestDispatcher rd = request.getRequestDispatcher("alterar-categoria.jsp");

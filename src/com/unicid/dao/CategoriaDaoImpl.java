@@ -125,13 +125,13 @@ public class CategoriaDaoImpl implements CategoriaDao {
 	}
 	
 	@Override
-	public void update(Categoria categoria) throws Exception {
+	public void update(int id, Categoria categoria) throws Exception {
 
 		try {
 			String sqlCategoriaxProdutos = "UPDATE categorias SET nome = ? WHERE id = ?";
 
 			stmt.setString(1, categoria.getNome());
-			stmt.setInt(2, (int) categoria.getId());
+			stmt.setInt(2, (int) id);
 			
 			stmt = this.conn.prepareStatement(sqlCategoriaxProdutos);
 

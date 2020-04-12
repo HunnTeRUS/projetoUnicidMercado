@@ -1,9 +1,6 @@
 package com.unicid.resources.fornecedores;
 
-import com.unicid.dao.CategoriaDaoImpl;
-import com.unicid.dao.FornecedorDaoImpl;
-import com.unicid.model.Categoria;
-import com.unicid.model.Fornecedor;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import com.unicid.dao.FornecedorDaoImpl;
+import com.unicid.model.Fornecedor;
 
 @WebServlet("/put-fornecedores")
 public class ServletPutFornecedores extends HttpServlet {
@@ -31,11 +30,13 @@ public class ServletPutFornecedores extends HttpServlet {
             Fornecedor fornecedor = new Fornecedor();
             FornecedorDaoImpl dao = new FornecedorDaoImpl();
 
+            int id = Integer.parseInt(request.getParameter("id"));
+            
             fornecedor.setNome(request.getParameter("nome"));
             fornecedor.setLocalizacao(request.getParameter("localizacao"));
             fornecedor.setTipoFornecimento(Integer.parseInt(request.getParameter("tipoFornecimento")));
 
-            dao.update(fornecedor);
+            dao.update(id, fornecedor);
 
             request.setAttribute("mensagem", "Fornecedor " + request.getParameter("nome") + " alterado com sucesso!");
             RequestDispatcher rd = request.getRequestDispatcher("alterar-fornecedor.jsp");

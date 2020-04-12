@@ -12,7 +12,7 @@ public interface EstoqueDao {
 
 	public void delete(int id) throws Exception;
 
-	public void update(Estoque estoque) throws Exception;
+	public void update(int id, Estoque estoque) throws Exception;
 
 	public Estoque findById(int id) throws Exception;
 }

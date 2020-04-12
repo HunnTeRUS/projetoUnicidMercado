@@ -100,7 +100,7 @@ public class EstoqueDaoImpl implements EstoqueDao {
 	}
 
 	@Override
-	public void update(Estoque produto) throws Exception {
+	public void update(int id, Estoque produto) throws Exception {
 
 		try {
 			String sqlEstoquexProdutos = "UPDATE estoque SET nome = ?, marca = ?, descricao = ?, preco = ?, categoria_id = ? WHERE id = ?";
@@ -109,7 +109,7 @@ public class EstoqueDaoImpl implements EstoqueDao {
 			stmt.setString(2, produto.getMarca());
 			stmt.setString(3, produto.getDescricao());
 			stmt.setDouble(4, produto.getPreco());
-			stmt.setInt(5, (int) produto.getIdCategoria());
+			stmt.setInt(5, id);
 
 			stmt = this.conn.prepareStatement(sqlEstoquexProdutos);
 

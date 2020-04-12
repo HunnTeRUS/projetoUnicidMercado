@@ -11,7 +11,7 @@ public interface CategoriaDao {
 
 	public void delete(int id) throws Exception;
 
-	public void update(Categoria categoria) throws Exception;
+	public void update(int id,Categoria categoria) throws Exception;
 
 	public Categoria findById(int id) throws Exception;
 }

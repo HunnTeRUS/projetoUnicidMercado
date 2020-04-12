@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/put-produtos")
+@WebServlet("/put-estoque")
 public class ServletPutEstoques extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,8 @@ public class ServletPutEstoques extends HttpServlet {
         try {
             Estoque estoque = new Estoque();
             EstoqueDaoImpl dao = new EstoqueDaoImpl();
+            
+            int id = Integer.parseInt(request.getParameter("id"));
 
             estoque.setMarca(request.getParameter("marca"));
             estoque.setNome(request.getParameter("nome"));
@@ -37,7 +39,7 @@ public class ServletPutEstoques extends HttpServlet {
             estoque.setPreco(Double.valueOf(request.getParameter("preco")));
             estoque.setIdCategoria(Integer.parseInt(request.getParameter("idCategoria")));
 
-            dao.update(estoque);
+            dao.update(id, estoque);
 
             request.setAttribute("mensagem", "Produto " + request.getParameter("nome") + " atualizado com sucesso!");
             RequestDispatcher rd = request.getRequestDispatcher("alterar-produto.jsp");
