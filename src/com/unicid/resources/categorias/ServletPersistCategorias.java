@@ -1,7 +1,6 @@
 package com.unicid.resources.categorias;
 
-import com.unicid.dao.CategoriaDaoImpl;
-import com.unicid.model.Categoria;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import com.unicid.model.Categoria;
+import com.unicid.services.CategoriaServicesImpl;
 
 @WebServlet("/persist-categorias")
 public class ServletPersistCategorias extends HttpServlet {
@@ -27,14 +28,14 @@ public class ServletPersistCategorias extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Categoria categoria = new Categoria();
-            CategoriaDaoImpl dao = new CategoriaDaoImpl();
+            CategoriaServicesImpl  services = new CategoriaServicesImpl ();
 
             categoria.setNome(request.getParameter("nome"));
 
-            dao.salvar(categoria);
+            services.persist(categoria);
 
             request.setAttribute("mensagem", "Categoria " + request.getParameter("nome") + " cadastrado com sucesso!");
-            RequestDispatcher rd = request.getRequestDispatcher("incluir-categoria.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("persist-categoria.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

@@ -10,7 +10,7 @@ public class ConnectionFactory {
 
 			String url = "jdbc:mysql://localhost:3306/BDMercado";
 			String login = "root";
-			String senha = "";
+			String senha = "hunter";
 			return (Connection) DriverManager.getConnection(url, login, senha);
 		} catch (Exception e) {
 			e.printStackTrace();

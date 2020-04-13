@@ -1,9 +1,6 @@
 package com.unicid.resources.estoques;
 
-import com.unicid.dao.CategoriaDaoImpl;
-import com.unicid.dao.EstoqueDaoImpl;
-import com.unicid.model.Categoria;
-import com.unicid.model.Estoque;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import com.unicid.model.Estoque;
+import com.unicid.services.ProdutoServicesImpl;
 
 @WebServlet("/put-estoque")
 public class ServletPutEstoques extends HttpServlet {
@@ -29,7 +28,7 @@ public class ServletPutEstoques extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Estoque estoque = new Estoque();
-            EstoqueDaoImpl dao = new EstoqueDaoImpl();
+            ProdutoServicesImpl services = new ProdutoServicesImpl();
             
             int id = Integer.parseInt(request.getParameter("id"));
 
@@ -39,10 +38,10 @@ public class ServletPutEstoques extends HttpServlet {
             estoque.setPreco(Double.valueOf(request.getParameter("preco")));
             estoque.setIdCategoria(Integer.parseInt(request.getParameter("idCategoria")));
 
-            dao.update(id, estoque);
+            services.put(id, estoque);
 
             request.setAttribute("mensagem", "Produto " + request.getParameter("nome") + " atualizado com sucesso!");
-            RequestDispatcher rd = request.getRequestDispatcher("alterar-produto.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("put-estoque.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

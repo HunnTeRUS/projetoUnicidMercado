@@ -1,7 +1,6 @@
 package com.unicid.resources.categorias;
 
-import com.unicid.dao.CategoriaDaoImpl;
-import com.unicid.model.Categoria;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import com.unicid.model.Categoria;
+import com.unicid.services.CategoriaServicesImpl;
 
 @WebServlet("/delete-categorias")
 public class ServletDeleteCategorias extends HttpServlet {
@@ -28,15 +29,15 @@ public class ServletDeleteCategorias extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
 
-            CategoriaDaoImpl dao = new CategoriaDaoImpl();
+            CategoriaServicesImpl  services = new CategoriaServicesImpl ();
 
-            Categoria categoriaExcluida = dao.findById(id);
+            Categoria categoriaExcluida = services.findById(id);
 
-            dao.delete(id);
+            services.delete(id);
 
             request.setAttribute("mensagem", "Categoria excluída: " + categoriaExcluida.getNome());
 
-            RequestDispatcher rd = request.getRequestDispatcher("excluir-categoria.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("delete-categoria.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

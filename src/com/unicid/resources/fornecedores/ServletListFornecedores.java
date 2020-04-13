@@ -1,9 +1,10 @@
 package com.unicid.resources.fornecedores;
 
-import com.unicid.dao.CategoriaDaoImpl;
-import com.unicid.dao.FornecedorDaoImpl;
-import com.unicid.model.Categoria;
-import com.unicid.model.Fornecedor;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,11 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import com.unicid.model.Fornecedor;
+import com.unicid.services.FornecedorServicesImpl;
 
 @WebServlet("/list-fornecedores")
 public class ServletListFornecedores extends HttpServlet {
@@ -32,22 +31,22 @@ public class ServletListFornecedores extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        FornecedorDaoImpl dao = new FornecedorDaoImpl();
+    	FornecedorServicesImpl  services = new FornecedorServicesImpl ();
         List<Fornecedor> bdListaFornecedores;
         ArrayList listaDeFornecedores = new ArrayList<>();
         Fornecedor fornecedor = new Fornecedor();
 
         try {
             if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
-                fornecedor = dao.findById(Integer.parseInt(request.getParameter("id")));
+                fornecedor = services.findById(Integer.parseInt(request.getParameter("id")));
 
                 request.setAttribute("jspFornecedor", fornecedor);
-                RequestDispatcher rd = request.getRequestDispatcher("listar-fornecedores.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("list-fornecedores.jsp");
                 rd.forward(request, response);
                 return;
             }
             else {
-                bdListaFornecedores = dao.listar();
+                bdListaFornecedores = services.list();
 
                 for (int i = 0; i < bdListaFornecedores.size(); i++) {
                     Fornecedor fornecedorTemp = new Fornecedor();
@@ -68,7 +67,7 @@ public class ServletListFornecedores extends HttpServlet {
         }
 
         request.setAttribute("jspFornecedores", listaDeFornecedores);
-        RequestDispatcher rd = request.getRequestDispatcher("listar-fornecedores.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("list-fornecedores.jsp");
         rd.forward(request, response);
     }
 }

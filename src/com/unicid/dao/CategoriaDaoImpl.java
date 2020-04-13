@@ -10,7 +10,7 @@ import com.unicid.model.Categoria;
 import com.unicid.model.Estoque;
 import com.unicid.util.ConnectionFactory;
 
-public class CategoriaDaoImpl implements CategoriaDao {
+public class CategoriaDaoImpl {
 	private Connection conn;
 	private PreparedStatement stmt;
 
@@ -24,8 +24,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		}
 	}
 
-	@Override
-	public void salvar(Categoria categoria) throws Exception {
+	public void persist(Categoria categoria) throws Exception {
 
 		try {
 			String sql = "INSERT INTO categorias (nome) VALUES (?)";
@@ -44,8 +43,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		}
 	}
 
-	@Override
-	public List<Categoria> listar() throws Exception {
+	public List<Categoria> list() throws Exception {
 		List<Categoria> listaCategorias = new ArrayList<Categoria>();
 
 		try {
@@ -95,7 +93,6 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		return listaCategorias;
 	}
 	
-	@Override
 	public void delete(int id) throws Exception {
 
 		try {
@@ -124,8 +121,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		}
 	}
 	
-	@Override
-	public void update(int id, Categoria categoria) throws Exception {
+	public void put(int id, Categoria categoria) throws Exception {
 
 		try {
 			String sqlCategoriaxProdutos = "UPDATE categorias SET nome = ? WHERE id = ?";
@@ -145,7 +141,6 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		}
 	}
 	
-	@Override
 	public Categoria findById(int id) throws Exception {
 		try {
 			String sqlCategoria = "SELECT * FROM categorias where id = " + id;

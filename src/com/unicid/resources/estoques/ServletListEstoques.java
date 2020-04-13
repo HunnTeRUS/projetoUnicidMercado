@@ -1,7 +1,10 @@
 package com.unicid.resources.estoques;
 
-import com.unicid.dao.EstoqueDaoImpl;
-import com.unicid.model.Estoque;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import com.unicid.model.Estoque;
+import com.unicid.services.ProdutoServicesImpl;
 
 @WebServlet("/list-produtos")
 public class ServletListEstoques extends HttpServlet {
@@ -30,22 +31,22 @@ public class ServletListEstoques extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        EstoqueDaoImpl dao = new EstoqueDaoImpl();
+    	ProdutoServicesImpl services = new ProdutoServicesImpl();
         List<Estoque> bdListaEstoque;
         ArrayList listaDeProdutos = new ArrayList<>();
         Estoque estoque = new Estoque();
 
         try {
             if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
-                estoque = dao.findById(Integer.parseInt(request.getParameter("id")));
+                estoque = services.findById(Integer.parseInt(request.getParameter("id")));
 
                 request.setAttribute("jspEstoque", estoque);
-                RequestDispatcher rd = request.getRequestDispatcher("listar-produtos.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("list-estoque.jsp");
                 rd.forward(request, response);
                 return;
             }
             else {
-                bdListaEstoque = dao.listar();
+                bdListaEstoque = services.list();
 
                 for (int i = 0; i < bdListaEstoque.size(); i++) {
                     Estoque estoqueTemp = new Estoque();
@@ -68,7 +69,7 @@ public class ServletListEstoques extends HttpServlet {
         }
 
         request.setAttribute("jspProdutos", listaDeProdutos);
-        RequestDispatcher rd = request.getRequestDispatcher("listar-produtos.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("list-estoque.jsp");
         rd.forward(request, response);
     }
 }

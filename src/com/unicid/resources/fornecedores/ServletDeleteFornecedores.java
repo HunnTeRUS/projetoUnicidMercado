@@ -1,9 +1,6 @@
 package com.unicid.resources.fornecedores;
 
-import com.unicid.dao.CategoriaDaoImpl;
-import com.unicid.dao.FornecedorDaoImpl;
-import com.unicid.model.Categoria;
-import com.unicid.model.Fornecedor;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import com.unicid.model.Fornecedor;
+import com.unicid.services.FornecedorServicesImpl;
 
 @WebServlet("/delete-fornecedor")
 public class ServletDeleteFornecedores extends HttpServlet {
@@ -30,15 +29,15 @@ public class ServletDeleteFornecedores extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
 
-            FornecedorDaoImpl dao = new FornecedorDaoImpl();
+            FornecedorServicesImpl services = new FornecedorServicesImpl ();
 
-            Fornecedor fornecedorExcluido = dao.findById(id);
+            Fornecedor fornecedorExcluido = services.findById(id);
 
-            dao.delete(id);
+            services.delete(id);
 
             request.setAttribute("mensagem", "Fornecedor excluído: " + fornecedorExcluido.getNome());
 
-            RequestDispatcher rd = request.getRequestDispatcher("excluir-fornecedor.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("delete-fornecedor.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

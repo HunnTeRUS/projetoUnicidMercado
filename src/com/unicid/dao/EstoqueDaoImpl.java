@@ -9,7 +9,7 @@ import java.util.List;
 import com.unicid.model.Estoque;
 import com.unicid.util.ConnectionFactory;
 
-public class EstoqueDaoImpl implements EstoqueDao {
+public class EstoqueDaoImpl {
 
 	private Connection conn;
 	private PreparedStatement stmt;
@@ -24,8 +24,7 @@ public class EstoqueDaoImpl implements EstoqueDao {
 		}
 	}
 
-	@Override
-	public void salvar(Estoque produto) throws Exception {
+	public void persist(Estoque produto) throws Exception {
 
 		try {
 
@@ -49,8 +48,7 @@ public class EstoqueDaoImpl implements EstoqueDao {
 		}
 	}
 
-	@Override
-	public List<Estoque> listar() throws Exception {
+	public List<Estoque> list() throws Exception {
 		List<Estoque> listaEstoques = new ArrayList<Estoque>();
 
 		try {
@@ -81,7 +79,7 @@ public class EstoqueDaoImpl implements EstoqueDao {
 		return listaEstoques;
 	}
 
-	@Override
+	
 	public void delete(int id) throws Exception {
 
 		try {
@@ -99,8 +97,7 @@ public class EstoqueDaoImpl implements EstoqueDao {
 		}
 	}
 
-	@Override
-	public void update(int id, Estoque produto) throws Exception {
+	public void put(int id, Estoque produto) throws Exception {
 
 		try {
 			String sqlEstoquexProdutos = "UPDATE estoque SET nome = ?, marca = ?, descricao = ?, preco = ?, categoria_id = ? WHERE id = ?";
@@ -123,7 +120,6 @@ public class EstoqueDaoImpl implements EstoqueDao {
 		}
 	}
 
-	@Override
 	public Estoque findById(int id) throws Exception {
 		try {
 			String sqlEstoque = "SELECT * FROM estoque where id = " + id;

@@ -9,7 +9,7 @@ import java.util.List;
 import com.unicid.model.Fornecedor;
 import com.unicid.util.ConnectionFactory;
 
-public class FornecedorDaoImpl implements FornecedorDao {
+public class FornecedorDaoImpl {
 
 	private Connection conn;
 	private PreparedStatement stmt;
@@ -24,8 +24,7 @@ public class FornecedorDaoImpl implements FornecedorDao {
 		}
 	}
 
-	@Override
-	public void salvar(Fornecedor fornecedor) throws Exception {
+	public void persist(Fornecedor fornecedor) throws Exception {
 
 		try {
 			String sql = "INSERT INTO fornecedor (nome, localizacao, tipoFornecimento) VALUES (?, ?, ?)";
@@ -46,8 +45,8 @@ public class FornecedorDaoImpl implements FornecedorDao {
 		}
 	}
 
-	@Override
-	public List<Fornecedor> listar() throws Exception {
+	
+	public List<Fornecedor> list() throws Exception {
 		List<Fornecedor> listaFornecedores = new ArrayList<Fornecedor>();
 
 		try {
@@ -77,7 +76,7 @@ public class FornecedorDaoImpl implements FornecedorDao {
 		return listaFornecedores;
 	}
 
-	@Override
+	
 	public void delete(int id) throws Exception {
 
 		try {
@@ -95,8 +94,8 @@ public class FornecedorDaoImpl implements FornecedorDao {
 		}
 	}
 
-	@Override
-	public void update(int id, Fornecedor fornecedor) throws Exception {
+	
+	public void put(int id, Fornecedor fornecedor) throws Exception {
 
 		try {
 			String sqlFornecedorxProdutos = "UPDATE fornecedor SET nome = ?, localizacao = ?, tipoFornecimento = ? WHERE id = ?";
@@ -119,7 +118,7 @@ public class FornecedorDaoImpl implements FornecedorDao {
 		}
 	}
 
-	@Override
+	
 	public Fornecedor findById(int id) throws Exception {
 		try {
 			String sqlFornecedor = "SELECT * FROM fornecedor where id = " + id;

@@ -1,9 +1,6 @@
 package com.unicid.resources.estoques;
 
-import com.unicid.dao.CategoriaDaoImpl;
-import com.unicid.dao.EstoqueDaoImpl;
-import com.unicid.model.Categoria;
-import com.unicid.model.Estoque;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import com.unicid.model.Estoque;
+import com.unicid.services.ProdutoServicesImpl;
 
 @WebServlet("/delete-estoque")
 public class ServletDeleteEstoques extends HttpServlet {
@@ -30,15 +29,15 @@ public class ServletDeleteEstoques extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
 
-            EstoqueDaoImpl dao = new EstoqueDaoImpl();
+            ProdutoServicesImpl services = new ProdutoServicesImpl();
 
-            Estoque estoqueExcluida = dao.findById(id);
+            Estoque estoqueExcluida = services.findById(id);
 
-            dao.delete(id);
+            services.delete(id);
 
             request.setAttribute("mensagem", "Produto excluído: " + estoqueExcluida.getNome());
 
-            RequestDispatcher rd = request.getRequestDispatcher("excluir-produto.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("delete-estoque.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

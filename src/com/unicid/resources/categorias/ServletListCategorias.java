@@ -1,8 +1,10 @@
 package com.unicid.resources.categorias;
 
-import com.unicid.dao.CategoriaDao;
-import com.unicid.dao.CategoriaDaoImpl;
-import com.unicid.model.Categoria;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,11 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import com.unicid.model.Categoria;
+import com.unicid.services.CategoriaServicesImpl;
 
 @WebServlet("/list-categorias")
 public class ServletListCategorias extends HttpServlet {
@@ -31,22 +31,22 @@ public class ServletListCategorias extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        CategoriaDaoImpl dao = new CategoriaDaoImpl();
+    	CategoriaServicesImpl  services = new CategoriaServicesImpl ();
         List<Categoria> bdListaCategoria;
         ArrayList listaDeCategorias = new ArrayList<>();
         Categoria categoria = new Categoria();
 
         try {
             if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
-                categoria = dao.findById(Integer.parseInt(request.getParameter("id")));
+                categoria = services.findById(Integer.parseInt(request.getParameter("id")));
 
                 request.setAttribute("jspCategorias", categoria);
-                RequestDispatcher rd = request.getRequestDispatcher("listar-categorias.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("list-categorias.jsp");
                 rd.forward(request, response);
                 return;
             }
             else {
-                bdListaCategoria = dao.listar();
+                bdListaCategoria = services.list();
 
                 for (int i = 0; i < bdListaCategoria.size(); i++) {
                     Categoria categoriaTemp = new Categoria();
