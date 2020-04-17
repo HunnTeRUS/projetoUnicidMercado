@@ -40,7 +40,15 @@ public class ServletListCategorias extends HttpServlet {
             if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
                 categoria = services.findById(Integer.parseInt(request.getParameter("id")));
 
-                request.setAttribute("jspCategorias", categoria);
+                Map categoriaMap = new HashMap();
+
+                categoriaMap.put("id", categoria.getId());
+                categoriaMap.put("nome", categoria.getNome());
+                categoriaMap.put("listProdutos", categoria.getIdsCategorias());
+                
+                listaDeCategorias.add(categoriaMap);
+                
+                request.setAttribute("jspCategorias", listaDeCategorias);
                 RequestDispatcher rd = request.getRequestDispatcher("list-categorias.jsp");
                 rd.forward(request, response);
                 return;

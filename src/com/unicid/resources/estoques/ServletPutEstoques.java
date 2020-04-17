@@ -36,6 +36,8 @@ public class ServletPutEstoques extends HttpServlet {
             estoque.setNome(request.getParameter("nome"));
             estoque.setDescricao(request.getParameter("descricao"));
             estoque.setPreco(Double.valueOf(request.getParameter("preco")));
+            estoque.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+            estoque.setId_fornecedor(Integer.parseInt(request.getParameter("idFornecedor")));
             estoque.setIdCategoria(Integer.parseInt(request.getParameter("idCategoria")));
 
             services.put(id, estoque);

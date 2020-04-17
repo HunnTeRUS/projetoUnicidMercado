@@ -40,7 +40,16 @@ public class ServletListFornecedores extends HttpServlet {
             if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
                 fornecedor = services.findById(Integer.parseInt(request.getParameter("id")));
 
-                request.setAttribute("jspFornecedor", fornecedor);
+                Map fornecedorMap = new HashMap();
+
+                fornecedorMap.put("id", fornecedor.getId());
+                fornecedorMap.put("nome", fornecedor.getNome());
+                fornecedorMap.put("tipoFornecimento", fornecedor.getTipoFornecimento());
+                fornecedorMap.put("localizacao", fornecedor.getLocalizacao());
+
+                listaDeFornecedores.add(fornecedorMap);
+                
+                request.setAttribute("jspFornecedor", listaDeFornecedores);
                 RequestDispatcher rd = request.getRequestDispatcher("list-fornecedores.jsp");
                 rd.forward(request, response);
                 return;

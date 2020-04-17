@@ -12,6 +12,10 @@ public class Estoque {
 	
 	public double preco;
 	
+	public int quantidade;
+	
+	public int id_fornecedor;
+	
 	public long idCategoria;
 	
 	public Estoque() {}
@@ -73,4 +77,22 @@ public class Estoque {
 	public void setIdCategoria(long idCategoria) {
 		this.idCategoria = idCategoria;
 	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public int getId_fornecedor() {
+		return id_fornecedor;
+	}
+
+	public void setId_fornecedor(int id_fornecedor) {
+		this.id_fornecedor = id_fornecedor;
+	}
+	
+	
 }

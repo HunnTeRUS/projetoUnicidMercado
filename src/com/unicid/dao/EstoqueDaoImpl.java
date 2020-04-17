@@ -28,7 +28,7 @@ public class EstoqueDaoImpl {
 
 		try {
 
-			String sql = "INSERT INTO estoque (nome, marca, descricao, preco, categoria_id) VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO estoque (nome, marca, descricao, preco, quantidade, fornecedor_id, categoria_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 			stmt = this.conn.prepareStatement(sql);
 
@@ -36,6 +36,8 @@ public class EstoqueDaoImpl {
 			stmt.setString(2, produto.getMarca());
 			stmt.setString(3, produto.getDescricao());
 			stmt.setDouble(4, produto.getPreco());
+			stmt.setInt(5, produto.getQuantidade());
+			stmt.setInt(6, produto.getId_fornecedor());
 			stmt.setInt(5, (int) produto.getIdCategoria());
 
 			stmt.executeUpdate();
@@ -60,10 +62,13 @@ public class EstoqueDaoImpl {
 			while (dados.next()) {
 				Estoque produto = new Estoque();
 
+				produto.setId(Integer.parseInt(dados.getString("id")));
 				produto.setNome(dados.getString("nome"));
 				produto.setMarca(dados.getString("marca"));
 				produto.setDescricao(dados.getString("descricao"));
 				produto.setPreco(dados.getDouble("preco"));
+				produto.setQuantidade(dados.getInt("quantidade"));
+				produto.setId_fornecedor(dados.getInt("fornecedor_id"));
 				produto.setIdCategoria(dados.getInt("categoria_id"));
 
 				listaEstoques.add(produto);
@@ -100,14 +105,16 @@ public class EstoqueDaoImpl {
 	public void put(int id, Estoque produto) throws Exception {
 
 		try {
-			String sqlEstoquexProdutos = "UPDATE estoque SET nome = ?, marca = ?, descricao = ?, preco = ?, categoria_id = ? WHERE id = ?";
+			String sqlEstoquexProdutos = "UPDATE estoque SET nome = ?, marca = ?, descricao = ?, preco = ?, quantidade = ?, categoria_id = ?, fornecedor_id = ? WHERE id = ?";
 
 			stmt.setString(1, produto.getNome());
 			stmt.setString(2, produto.getMarca());
 			stmt.setString(3, produto.getDescricao());
 			stmt.setDouble(4, produto.getPreco());
-			stmt.setInt(5, id);
-
+			stmt.setInt(5, produto.getQuantidade());
+			stmt.setInt(6, (int) produto.getIdCategoria());
+			stmt.setInt(7, produto.getId_fornecedor());
+			
 			stmt = this.conn.prepareStatement(sqlEstoquexProdutos);
 
 			stmt.executeQuery();
@@ -129,14 +136,18 @@ public class EstoqueDaoImpl {
 			ResultSet dados = stmt.executeQuery();
 
 			while (dados.next()) {
+				produto.setId(Integer.parseInt(dados.getString("id")));
 				produto.setNome(dados.getString("nome"));
 				produto.setMarca(dados.getString("marca"));
 				produto.setDescricao(dados.getString("descricao"));
 				produto.setPreco(dados.getDouble("preco"));
+				produto.setQuantidade(dados.getInt("quantidade"));
+				produto.setId_fornecedor(dados.getInt("fornecedor_id"));
 				produto.setIdCategoria(dados.getInt("categoria_id"));
 			}
 
 			return produto;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 

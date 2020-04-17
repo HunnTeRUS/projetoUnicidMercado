@@ -8,9 +8,12 @@ nome varchar(255),
 marca varchar(255),
 descricao varchar(255),
 preco double,
+quantidade int,
 categoria_id int,
+fornecedor_id int,
 
-FOREIGN KEY (categoria_id) REFERENCES categorias(id)
+FOREIGN KEY (categoria_id) REFERENCES categorias(id),
+FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id)
 );
 
 

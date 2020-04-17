@@ -40,7 +40,19 @@ public class ServletListEstoques extends HttpServlet {
             if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
                 estoque = services.findById(Integer.parseInt(request.getParameter("id")));
 
-                request.setAttribute("jspEstoque", estoque);
+                Map estoqueMap = new HashMap();
+
+                estoqueMap.put("id", estoque.getId());
+                estoqueMap.put("nome", estoque.getNome());
+                estoqueMap.put("descricao", estoque.getDescricao());
+                estoqueMap.put("idCategoria", estoque.getIdCategoria());
+                estoqueMap.put("marca", estoque.getMarca());
+                estoqueMap.put("preco", estoque.getPreco());
+                estoqueMap.put("quantidade", estoque.getQuantidade());
+                estoqueMap.put("idFornecedor", estoque.getId_fornecedor());
+                listaDeProdutos.add(estoqueMap);
+                
+                request.setAttribute("jspEstoque", listaDeProdutos);
                 RequestDispatcher rd = request.getRequestDispatcher("list-estoque.jsp");
                 rd.forward(request, response);
                 return;
@@ -60,7 +72,9 @@ public class ServletListEstoques extends HttpServlet {
                     estoqueMap.put("idCategoria", estoqueTemp.getIdCategoria());
                     estoqueMap.put("marca", estoqueTemp.getMarca());
                     estoqueMap.put("preco", estoqueTemp.getPreco());
-
+                    estoqueMap.put("quantidade", estoqueTemp.getQuantidade());
+                    estoqueMap.put("idFornecedor", estoqueTemp.getId_fornecedor());
+                    
                     listaDeProdutos.add(estoqueMap);
                 }
             }
@@ -68,7 +82,7 @@ public class ServletListEstoques extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("jspProdutos", listaDeProdutos);
+        request.setAttribute("jspEstoque", listaDeProdutos);
         RequestDispatcher rd = request.getRequestDispatcher("list-estoque.jsp");
         rd.forward(request, response);
     }
