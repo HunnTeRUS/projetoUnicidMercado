@@ -37,7 +37,7 @@ public class ServletListEstoques extends HttpServlet {
         Estoque estoque = new Estoque();
 
         try {
-            if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
+            if(request.getParameter("id") != null){
                 estoque = services.findById(Integer.parseInt(request.getParameter("id")));
 
                 Map estoqueMap = new HashMap();

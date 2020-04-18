@@ -37,7 +37,7 @@ public class ServletListCategorias extends HttpServlet {
         Categoria categoria = new Categoria();
 
         try {
-            if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
+            if(request.getParameter("id") != null){
                 categoria = services.findById(Integer.parseInt(request.getParameter("id")));
 
                 Map categoriaMap = new HashMap();

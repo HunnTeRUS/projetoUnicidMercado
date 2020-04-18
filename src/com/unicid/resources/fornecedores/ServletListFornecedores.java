@@ -37,7 +37,7 @@ public class ServletListFornecedores extends HttpServlet {
         Fornecedor fornecedor = new Fornecedor();
 
         try {
-            if(!request.getParameter("id").isEmpty() && request.getParameter("id") != null){
+            if(request.getParameter("id") != null){
                 fornecedor = services.findById(Integer.parseInt(request.getParameter("id")));
 
                 Map fornecedorMap = new HashMap();
