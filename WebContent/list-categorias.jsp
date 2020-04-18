@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@ taglib prefix="resp" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*" %>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,11 +14,13 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/default.css" rel="stylesheet" type="text/css"
-	media="all" />
-<link href="${pageContext.request.contextPath}/css/fonts.css" rel="stylesheet" type="text/css"
-	media="all" />
-<link href="${pageContext.request.contextPath}/pages/categorias/categorias.css" rel="stylesheet" type="text/css" media="all" />
+<link href="${pageContext.request.contextPath}/css/default.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link href="${pageContext.request.contextPath}/css/fonts.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link
+	href="${pageContext.request.contextPath}/pages/categorias/categorias.css"
+	rel="stylesheet" type="text/css" media="all" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
@@ -37,27 +42,30 @@
 
 	<div id="logo" class="container">
 		<h1>
-			<a href="#" class="icon icon-tasks"><span>Excluir
-					Categoria</span></a>
+			<a href="#" class="icon icon-tasks"><span>Categorias</span></a>
 		</h1>
 
 		<div class="register-container">
 			<div class="content">
-				<form action="${pageContext.request.contextPath}/delete-categorias">
-
-					<input type="text" class="inputNome" name="id" id="id" required
-						placeholder="ID da categoria" />
-
-					<button class="button" type="submit">Excluir</button>
-
-
-					<div>
-						<resp:out value="${mensagem}" />
-					</div>
-				</form>
+				<table>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Produtos</th>
+					</tr>
+					<c:forEach items="${jspCategorias}" var="categorias">
+						<tr>
+							<td><c:out value="${categorias.id}" /></td>
+							<td><c:out value="${categorias.nome}" /></td>
+						<c:forEach items="${categorias.listProdutos}" var="produtos">
+							<td><c:out value="${produtos.nome}" /></td>
+						</c:forEach>
+							
+						</tr>
+					</c:forEach>
+				</table>
 			</div>
 		</div>
-
 	</div>
 
 	<div id="page" class="container"></div>

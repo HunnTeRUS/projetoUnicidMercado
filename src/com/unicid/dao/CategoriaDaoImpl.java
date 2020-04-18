@@ -102,7 +102,7 @@ public class CategoriaDaoImpl {
 
 			ResultSet dadosCategoriasxPermissao = stmt.executeQuery();
 
-			if (!dadosCategoriasxPermissao.wasNull())
+			if (!(dadosCategoriasxPermissao.getRow() == 0))
 				throw new Exception("Essa categoria não pode ser excluída, pois há produtos associados a ela");
 
 			else {
@@ -110,7 +110,7 @@ public class CategoriaDaoImpl {
 
 				stmt = this.conn.prepareStatement(sqlExcluir);
 
-				stmt.executeQuery();
+				stmt.executeUpdate();
 			}
 
 		} catch (Exception e) {
@@ -126,12 +126,13 @@ public class CategoriaDaoImpl {
 		try {
 			String sqlCategoriaxProdutos = "UPDATE categorias SET nome = ? WHERE id = ?";
 
-			stmt.setString(1, categoria.getNome());
-			stmt.setInt(2, (int) id);
-
 			stmt = this.conn.prepareStatement(sqlCategoriaxProdutos);
+			
+			stmt.setString(1, categoria.getNome());
+			stmt.setInt(2, id);
 
-			stmt.executeQuery();
+
+			stmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
