@@ -17,7 +17,7 @@ public class CategoriaDaoImpl {
 	public CategoriaDaoImpl() {
 
 		try {
-			conn = ConnectionFactory.getConnection();
+			this.conn = ConnectionFactory.getConnection();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,24 +92,24 @@ public class CategoriaDaoImpl {
 
 		return listaCategorias;
 	}
-	
+
 	public void delete(int id) throws Exception {
 
 		try {
 			String sqlCategoriaxProdutos = "SELECT categoria_id FROM estoque WHERE categoria_id = " + id;
-			
+
 			stmt = this.conn.prepareStatement(sqlCategoriaxProdutos);
 
 			ResultSet dadosCategoriasxPermissao = stmt.executeQuery();
 
-			if(!dadosCategoriasxPermissao.wasNull())
+			if (!dadosCategoriasxPermissao.wasNull())
 				throw new Exception("Essa categoria não pode ser excluída, pois há produtos associados a ela");
-			
+
 			else {
 				String sqlExcluir = "DELETE FROM categorias WHERE id = " + id;
-				
+
 				stmt = this.conn.prepareStatement(sqlExcluir);
-				
+
 				stmt.executeQuery();
 			}
 
@@ -120,7 +120,7 @@ public class CategoriaDaoImpl {
 			ConnectionFactory.closeConnection(conn, stmt);
 		}
 	}
-	
+
 	public void put(int id, Categoria categoria) throws Exception {
 
 		try {
@@ -128,11 +128,11 @@ public class CategoriaDaoImpl {
 
 			stmt.setString(1, categoria.getNome());
 			stmt.setInt(2, (int) id);
-			
+
 			stmt = this.conn.prepareStatement(sqlCategoriaxProdutos);
 
 			stmt.executeQuery();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -140,7 +140,7 @@ public class CategoriaDaoImpl {
 			ConnectionFactory.closeConnection(conn, stmt);
 		}
 	}
-	
+
 	public Categoria findById(int id) throws Exception {
 		try {
 			String sqlCategoria = "SELECT * FROM categorias where id = " + id;
@@ -153,16 +153,16 @@ public class CategoriaDaoImpl {
 				categoria.setId(dados.getInt("id"));
 				categoria.setNome(dados.getString("nome"));
 			}
-			
+
 			return categoria;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 
 		} finally {
 			ConnectionFactory.closeConnection(conn, stmt);
 		}
-		
+
 		return null;
 	}
-	
+
 }
