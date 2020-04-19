@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.unicid.model.Estoque;
+import com.unicid.services.CategoriaServicesImpl;
+import com.unicid.services.FornecedorServicesImpl;
 import com.unicid.services.ProdutoServicesImpl;
 
-@WebServlet("/list-produtos")
+@WebServlet("/list-estoque")
 public class ServletListEstoques extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -32,6 +34,9 @@ public class ServletListEstoques extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     	ProdutoServicesImpl services = new ProdutoServicesImpl();
+    	CategoriaServicesImpl categoria = new CategoriaServicesImpl();
+    	FornecedorServicesImpl Fornecedor = new FornecedorServicesImpl();
+
         List<Estoque> bdListaEstoque;
         ArrayList listaDeProdutos = new ArrayList<>();
         Estoque estoque = new Estoque();
@@ -45,15 +50,15 @@ public class ServletListEstoques extends HttpServlet {
                 estoqueMap.put("id", estoque.getId());
                 estoqueMap.put("nome", estoque.getNome());
                 estoqueMap.put("descricao", estoque.getDescricao());
-                estoqueMap.put("idCategoria", estoque.getIdCategoria());
+                estoqueMap.put("idCategoria", categoria.findById((int) estoque.getIdCategoria()).getNome());
                 estoqueMap.put("marca", estoque.getMarca());
                 estoqueMap.put("preco", estoque.getPreco());
                 estoqueMap.put("quantidade", estoque.getQuantidade());
-                estoqueMap.put("idFornecedor", estoque.getId_fornecedor());
+                estoqueMap.put("idFornecedor", Fornecedor.findById(estoque.getId_fornecedor()).getNome());
                 listaDeProdutos.add(estoqueMap);
                 
                 request.setAttribute("jspEstoque", listaDeProdutos);
-                RequestDispatcher rd = request.getRequestDispatcher("list-estoque.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/pages/estoques/list-estoque.jsp");
                 rd.forward(request, response);
                 return;
             }
@@ -69,11 +74,11 @@ public class ServletListEstoques extends HttpServlet {
                     estoqueMap.put("id", estoqueTemp.getId());
                     estoqueMap.put("nome", estoqueTemp.getNome());
                     estoqueMap.put("descricao", estoqueTemp.getDescricao());
-                    estoqueMap.put("idCategoria", estoqueTemp.getIdCategoria());
+                    estoqueMap.put("idCategoria", categoria.findById((int) estoqueTemp.getIdCategoria()).getNome());
                     estoqueMap.put("marca", estoqueTemp.getMarca());
                     estoqueMap.put("preco", estoqueTemp.getPreco());
                     estoqueMap.put("quantidade", estoqueTemp.getQuantidade());
-                    estoqueMap.put("idFornecedor", estoqueTemp.getId_fornecedor());
+                    estoqueMap.put("idFornecedor", Fornecedor.findById(estoqueTemp.getId_fornecedor()).getNome());
                     
                     listaDeProdutos.add(estoqueMap);
                 }
@@ -83,7 +88,7 @@ public class ServletListEstoques extends HttpServlet {
         }
 
         request.setAttribute("jspEstoque", listaDeProdutos);
-        RequestDispatcher rd = request.getRequestDispatcher("list-estoque.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/pages/estoques/list-estoque.jsp");
         rd.forward(request, response);
     }
 }

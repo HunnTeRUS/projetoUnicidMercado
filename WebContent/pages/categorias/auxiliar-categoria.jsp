@@ -4,13 +4,11 @@
 	pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@ taglib prefix="resp" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Inserir</title>
+	<title>Excluir</title>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/frontLibs/jquery-3.5.0.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/frontLibs/popper-2.3.3.js"></script>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/frontLibs/bootstrap-4.4.1/css/bootstrap.min.css" />
@@ -48,31 +46,13 @@
 	</div>
 </div>
 <div class="sis-container-content col-md-12">
-	<h3 class="sis-title col-md-12">Inserir Fornecedor</h3>
+	<h3 class="sis-title col-md-12">Excluir Produto</h3>
 </div>
 <div class="sis-container-content col-md-12">
-	<form action="${pageContext.request.contextPath}/persist-fornecedores">
-		<label for="nome">Nome</label>
-		<input class="inputCategorias" placeholder="Nome do(a) Fornecedor(a)" type="text" name="nome" id="nome" required />
-		
-		<label for="nome">Localização da Empresa</label>
-		<input class="inputCategorias" placeholder="Localização" type="text" name="localizacao" id="localizacao" required />
-		
-		<label for="nome">Tipo de Fornecimento</label>
-		<!-- <input class="inputCategorias" placeholder="Tipo Fornecimento" type="text" name="tipoFornecimento" id="tipoFornecimento" required /> -->
-		<select name="tipoFornecimento">
-   			 <option value="1">Alimenticio</option>
-    		 <option value="2">Limpeza</option>
-    		 <option value="3">Cosmeticos</option>
-    		 <option value="4">Pet</option>
-    		 <option value="5">Diversos</option>
-		</select>
-		<br/>
-		<input type="submit" value="Cadastrar" />
 		<div>
 			<resp:out value="${mensagem}" />
 		</div>
-    </form>
+		<a href="${pageContext.request.contextPath}/list-categorias">Voltar</a>
 </div>
 </body>
 </html>

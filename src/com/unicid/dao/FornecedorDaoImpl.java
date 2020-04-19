@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import com.unicid.model.Fornecedor;
 import com.unicid.util.ConnectionFactory;
 
@@ -84,11 +85,13 @@ public class FornecedorDaoImpl {
 
 			stmt = this.conn.prepareStatement(sqlExcluir);
 
-			stmt.executeQuery();
+			stmt.executeUpdate();
+
+		} catch (MySQLIntegrityConstraintViolationException e) {
+			throw new MySQLIntegrityConstraintViolationException("Esse fornedor não pode ser excluída, pois há produtos associados a ele");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		} finally {
 			ConnectionFactory.closeConnection(conn, stmt);
 		}
@@ -100,15 +103,16 @@ public class FornecedorDaoImpl {
 		try {
 			String sqlFornecedorxProdutos = "UPDATE fornecedor SET nome = ?, localizacao = ?, tipoFornecimento = ? WHERE id = ?";
 
+			stmt = this.conn.prepareStatement(sqlFornecedorxProdutos);
+
 			stmt.setString(1, fornecedor.getNome());
 			stmt.setString(2, fornecedor.getLocalizacao());
 
 			stmt.setInt(3, fornecedor.getTipoFornecimento());
 			stmt.setInt(4, id);
 
-			stmt = this.conn.prepareStatement(sqlFornecedorxProdutos);
 
-			stmt.executeQuery();
+			stmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -138,8 +142,6 @@ public class FornecedorDaoImpl {
 		} catch (Exception e) {
 			e.printStackTrace();
 
-		} finally {
-			ConnectionFactory.closeConnection(conn, stmt);
 		}
 
 		return null;

@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.unicid.model.Categoria;
 import com.unicid.services.CategoriaServicesImpl;
 
-@WebServlet("/list-categorias")
-public class ServletListCategorias extends HttpServlet {
+@WebServlet("/list-categorias-byid")
+public class ServletListByIdAndUpdateCategorias extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    public ServletListCategorias() {
+    public ServletListByIdAndUpdateCategorias() {
         super();
     }
 
@@ -48,30 +48,9 @@ public class ServletListCategorias extends HttpServlet {
                 listaDeCategorias.add(categoriaMap);
                 
                 request.setAttribute("jspCategorias", listaDeCategorias);
-                RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/list-categorias.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/put-categoria.jsp");
                 rd.forward(request, response);
                 return;
-            }
-            else {
-                List<Categoria> bdListaCategoria= new ArrayList<>();
-                bdListaCategoria = services.list();
-
-                for (int i = 0; i < bdListaCategoria.size(); i++) {
-                    Categoria categoriaTemp = new Categoria();
-                    categoriaTemp = bdListaCategoria.get(i);
-
-                    Map categoriaMap = new HashMap();
-
-                    categoriaMap.put("id", categoriaTemp.getId());
-                    categoriaMap.put("nome", categoriaTemp.getNome());
-                    categoriaMap.put("listProdutos", categoriaTemp.getIdsProdutos());
-
-                    listaDeCategorias.add(categoriaMap);
-                }
-
-                request.setAttribute("jspCategorias", listaDeCategorias);
-                RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/list-categorias.jsp");
-                rd.forward(request, response);
             }
         } catch(Exception e) {
         	e.printStackTrace();

@@ -31,13 +31,11 @@ public class ServletDeleteEstoques extends HttpServlet {
 
             ProdutoServicesImpl services = new ProdutoServicesImpl();
 
-            Estoque estoqueExcluida = services.findById(id);
-
             services.delete(id);
 
-            request.setAttribute("mensagem", "Produto excluído: " + estoqueExcluida.getNome());
+            request.setAttribute("mensagem", "Produto excluído com sucesso");
 
-            RequestDispatcher rd = request.getRequestDispatcher("delete-estoque.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/estoques/auxiliar-estoque.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

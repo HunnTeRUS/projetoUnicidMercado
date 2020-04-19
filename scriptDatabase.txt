@@ -24,7 +24,8 @@ nome varchar(255));
 
 
 CREATE TABLE fornecedor (
-	id int primary key,
+	id int primary key auto_increment,
     nome varchar(255),
+    localizacao varchar(255),
     tipoFornecimento int
 );

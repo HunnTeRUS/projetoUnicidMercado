@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.unicid.enums.TipoProduto;
 import com.unicid.model.Fornecedor;
 import com.unicid.services.FornecedorServicesImpl;
 
@@ -31,17 +32,31 @@ public class ServletPersistFornecedores extends HttpServlet {
             FornecedorServicesImpl services = new FornecedorServicesImpl ();
 
             fornecedor.setNome(request.getParameter("nome"));
-            fornecedor.setTipoFornecimento(Integer.parseInt(request.getParameter("tipoFornecimento")));
+            
+            if(difTipos(Integer.parseInt(request.getParameter("tipoFornecimento"))))
+            	fornecedor.setTipoFornecimento(Integer.parseInt(request.getParameter("tipoFornecimento")));
+            else throw new Exception("Tipo de fornecimento invalido");
+            
             fornecedor.setLocalizacao(request.getParameter("localizacao"));
 
             services.persist(fornecedor);
 
             request.setAttribute("mensagem", "Fornecedor " + request.getParameter("nome") + " cadastrado com sucesso!");
-            RequestDispatcher rd = request.getRequestDispatcher("persist-fornecedor.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/fornecedores/persist-fornecedor.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    private boolean difTipos(int id) {
+    	if(id != TipoProduto.ALIMENTICIO.getCod() &&
+    			id != TipoProduto.COSMETICOS.getCod() &&
+    				id != TipoProduto.DIVERSOS.getCod() && 
+    					id != TipoProduto.LIMPEZA.getCod() && 
+    						id != TipoProduto.DIVERSOS.getCod())
+    		return false;
+    	return true;
     }
 }

@@ -288,3 +288,14 @@ tr:hover {
         margin: 30px auto 10px !important;
       }
  }
+ 
+/*ALTERACOES NAS TELAS DE CATEGORIAS*/
+.inputCategorias {
+	width: 100%;
+    height: 60px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    border-radius:8px;
+    padding: 0 50px;
+    text-align: center;
+}

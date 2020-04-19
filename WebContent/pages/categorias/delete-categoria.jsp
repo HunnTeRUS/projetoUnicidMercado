@@ -9,12 +9,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Excluir</title>
-	<script type="text/javascript" src="../../frontLibs/jquery-3.5.0.min.js"></script>
-	<script type="text/javascript" src="../../frontLibs/popper-2.3.3.js"></script>
-	<link type="text/css" rel="stylesheet" href="../../frontLibs/bootstrap-4.4.1/css/bootstrap.min.css" />
-	<link type="text/css" rel="stylesheet" href="../../css/fonts.css" />
-	<link type="text/css" rel="stylesheet" href="../../css/reset.css" />
-	<link type="text/css" rel="stylesheet" href="../../css/mainstyle.css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/frontLibs/jquery-3.5.0.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/frontLibs/popper-2.3.3.js"></script>
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/frontLibs/bootstrap-4.4.1/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/mainstyle.css" />
 </head>
 <body>
 <div class="sis-header col-md-12">
@@ -25,28 +25,22 @@
 		<div class="sis-menu-container col-md-3 col-sm-12">
 			<label class="sis-menu-label">Categorias</label>
 			<ul class="sis-menu-list" style="display: none;">
-				<li><a href="#" class="sis-list-item">listar</a></li>
-				<li><a href="#" class="sis-list-item">atualizar</a></li>
-				<li><a href="#" class="sis-list-item">excluir</a></li>
-				<li><a href="#" class="sis-list-item">inserir</a></li>
+				<li><a href="${pageContext.request.contextPath}/list-categorias" class="sis-list-item">listar</a></li>
+				<li><a href="${pageContext.request.contextPath}/pages/categorias/persist-categoria.jsp" class="sis-list-item">inserir</a></li>
 			</ul>
 		</div>
 		<div class="sis-menu-container col-md-3 col-sm-12">
 			<label class="sis-menu-label">Estoques</label>
 			<ul class="sis-menu-list" style="display: none;">
-				<li><a href="#" class="sis-list-item">listar</a></li>
-				<li><a href="#" class="sis-list-item">atualizar</a></li>
-				<li><a href="#" class="sis-list-item">excluir</a></li>
-				<li><a href="#" class="sis-list-item">inserir</a></li>
+				<li><a href="${pageContext.request.contextPath}/list-estoque" class="sis-list-item">listar</a></
+				<li><a href="${pageContext.request.contextPath}/persist-estoque" class="sis-list-item">inserir</a></li>
 			</ul>
 		</div>
 		<div class="sis-menu-container col-md-3 col-sm-12">
 			<label class="sis-menu-label">Fornecedores</label>
 			<ul class="sis-menu-list" style="display: none;">
-				<li><a href="#" class="sis-list-item">listar</a></li>
-				<li><a href="#" class="sis-list-item">atualizar</a></li>
-				<li><a href="#" class="sis-list-item">excluir</a></li>
-				<li><a href="#" class="sis-list-item">inserir</a></li>
+				<li><a href="${pageContext.request.contextPath}/list-fornecedores" class="sis-list-item">listar</a></li>
+				<li><a href="${pageContext.request.contextPath}/pages/fornecedores/persist-fornecedor.jsp" class="sis-list-item">inserir</a></li>
 			</ul>
 		</div>
 	</div>

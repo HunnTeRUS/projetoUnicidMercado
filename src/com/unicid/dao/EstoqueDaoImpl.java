@@ -38,7 +38,7 @@ public class EstoqueDaoImpl {
 			stmt.setDouble(4, produto.getPreco());
 			stmt.setInt(5, produto.getQuantidade());
 			stmt.setInt(6, produto.getId_fornecedor());
-			stmt.setInt(5, (int) produto.getIdCategoria());
+			stmt.setInt(7, (int) produto.getIdCategoria());
 
 			stmt.executeUpdate();
 
@@ -92,7 +92,7 @@ public class EstoqueDaoImpl {
 
 			stmt = this.conn.prepareStatement(sqlExcluir);
 
-			stmt.executeQuery();
+			stmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -107,6 +107,8 @@ public class EstoqueDaoImpl {
 		try {
 			String sqlEstoquexProdutos = "UPDATE estoque SET nome = ?, marca = ?, descricao = ?, preco = ?, quantidade = ?, categoria_id = ?, fornecedor_id = ? WHERE id = ?";
 
+			stmt = this.conn.prepareStatement(sqlEstoquexProdutos);
+			
 			stmt.setString(1, produto.getNome());
 			stmt.setString(2, produto.getMarca());
 			stmt.setString(3, produto.getDescricao());
@@ -114,10 +116,9 @@ public class EstoqueDaoImpl {
 			stmt.setInt(5, produto.getQuantidade());
 			stmt.setInt(6, (int) produto.getIdCategoria());
 			stmt.setInt(7, produto.getId_fornecedor());
+			stmt.setInt(8, id);
 			
-			stmt = this.conn.prepareStatement(sqlEstoquexProdutos);
-
-			stmt.executeQuery();
+			stmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -151,9 +152,7 @@ public class EstoqueDaoImpl {
 		} catch (Exception e) {
 			e.printStackTrace();
 
-		} finally {
-			ConnectionFactory.closeConnection(conn, stmt);
-		}
+		} 
 
 		return null;
 	}

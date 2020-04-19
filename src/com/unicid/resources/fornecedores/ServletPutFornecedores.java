@@ -39,7 +39,7 @@ public class ServletPutFornecedores extends HttpServlet {
             services.put(id, fornecedor);
 
             request.setAttribute("mensagem", "Fornecedor " + request.getParameter("nome") + " alterado com sucesso!");
-            RequestDispatcher rd = request.getRequestDispatcher("put-fornecedor.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/fornecedores/auxiliar-fornecedor.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

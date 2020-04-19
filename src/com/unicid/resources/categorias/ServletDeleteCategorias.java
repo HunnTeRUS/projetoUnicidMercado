@@ -35,11 +35,13 @@ public class ServletDeleteCategorias extends HttpServlet {
 
             request.setAttribute("mensagem", "Categoria excluída com sucesso!");
 
-            RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/delete-categoria.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/auxiliar-categoria.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {
-            e.printStackTrace();
+            request.setAttribute("mensagem", "Essa categoria não pode ser excluida, pois há produtos associados a ela!");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/auxiliar-categoria.jsp");
+            rd.forward(request, response);
         }
     }
 }

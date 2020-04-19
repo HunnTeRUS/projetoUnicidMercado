@@ -1,5 +1,6 @@
 package com.unicid.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Categoria {
@@ -8,7 +9,7 @@ public class Categoria {
 	
 	public String nome;
 	
-	public List<Estoque> idsCategorias;
+	public List<Estoque> idsProdutos = new ArrayList<Estoque>();
 	
 	public Categoria() {}
 	
@@ -34,12 +35,12 @@ public class Categoria {
 		this.nome = nome;
 	}
 
-	public List<Estoque> getIdsCategorias() {
-		return idsCategorias;
+	public List<Estoque> getIdsProdutos() {
+		return idsProdutos;
 	}
 
-	public void setIdsCategorias(List<Estoque> idsCategorias) {
-		this.idsCategorias = idsCategorias;
+	public void setIdsProdutos(List<Estoque> idsProdutos) {
+		this.idsProdutos = idsProdutos;
 	}
 	
 }

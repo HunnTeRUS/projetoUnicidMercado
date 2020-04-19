@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.unicid.enums.TipoProduto;
+import com.unicid.model.Categoria;
 import com.unicid.model.Fornecedor;
 import com.unicid.services.FornecedorServicesImpl;
 
-@WebServlet("/list-fornecedores")
-public class ServletListFornecedores extends HttpServlet {
+@WebServlet("/list-fornecedor-byid")
+public class ServletListByIdAndUpdateFornecedor extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    public ServletListFornecedores() {
+    public ServletListByIdAndUpdateFornecedor() {
         super();
     }
 
@@ -31,14 +31,13 @@ public class ServletListFornecedores extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	
     	FornecedorServicesImpl  services = new FornecedorServicesImpl ();
-        List<Fornecedor> bdListaFornecedores;
         ArrayList listaDeFornecedores = new ArrayList<>();
         Fornecedor fornecedor = new Fornecedor();
 
         try {
-            if(request.getParameter("id") != null){
+        	if(request.getParameter("id") != null){
                 fornecedor = services.findById(Integer.parseInt(request.getParameter("id")));
 
                 Map fornecedorMap = new HashMap();
@@ -51,33 +50,12 @@ public class ServletListFornecedores extends HttpServlet {
                 listaDeFornecedores.add(fornecedorMap);
                 
                 request.setAttribute("jspFornecedor", listaDeFornecedores);
-                RequestDispatcher rd = request.getRequestDispatcher("list-fornecedores.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/pages/fornecedores/put-fornecedor.jsp");
                 rd.forward(request, response);
                 return;
             }
-            else {
-                bdListaFornecedores = services.list();
-
-                for (int i = 0; i < bdListaFornecedores.size(); i++) {
-                    Fornecedor fornecedorTemp = new Fornecedor();
-                    fornecedorTemp = bdListaFornecedores.get(i);
-
-                    Map fornecedorMap = new HashMap();
-
-                    fornecedorMap.put("id", fornecedorTemp.getId());
-                    fornecedorMap.put("nome", fornecedorTemp.getNome());
-                    fornecedorMap.put("tipoFornecimento", fornecedorTemp.getTipoFornecimento());
-                    fornecedorMap.put("localizacao", fornecedorTemp.getLocalizacao());
-
-                    listaDeFornecedores.add(fornecedorMap);
-                }
-            }
         } catch(Exception e) {
-            e.printStackTrace();
+        	e.printStackTrace();
         }
-
-        request.setAttribute("jspFornecedores", listaDeFornecedores);
-        RequestDispatcher rd = request.getRequestDispatcher("/pages/fornecedores/list-fornecedores.jsp");
-        rd.forward(request, response);
     }
 }
