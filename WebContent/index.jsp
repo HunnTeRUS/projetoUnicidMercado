@@ -6,9 +6,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Tuncat</title>
-	<script type="text/javascript" src="./FrontLibs/jquery-3.5.0.min.js"></script>
-	<script type="text/javascript" src="./FrontLibs/popper-2.3.3.js"></script>
-	<link type="text/css" rel="stylesheet" href="./FrontLibs/bootstrap-4.4.1/css/bootstrap.min.css" />
+	<script type="text/javascript" src="./frontLibs/jquery-3.5.0.min.js"></script>
+	<script type="text/javascript" src="./frontLibs/popper-2.3.3.js"></script>
+	<link type="text/css" rel="stylesheet" href="./frontLibs/bootstrap-4.4.1/css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet" href="./stylesheet/fonts.css" />
 	<link type="text/css" rel="stylesheet" href="./stylesheet/reset.css" />
 	<link type="text/css" rel="stylesheet" href="./stylesheet/mainstyle.css" />
