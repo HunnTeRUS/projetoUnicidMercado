@@ -1,0 +1,245 @@
+/* inicio => edita menu hover do site */
+
+.sis-header {
+    position: sticky;
+    top: 0;
+    display: block;
+    width: 100%;
+    background-color: #4E758A;
+    color: #FFF;
+    box-shadow: 0 5px 8px -5px #000;
+    z-index: 5;
+}
+
+.sis-menu-bar {
+    display: block;
+    width: fit-content;
+    margin: 0 auto !important;
+}
+
+.sis-menu-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+    text-align: center;
+}
+
+.sis-menu-label {
+    display: block;
+    min-width: 200px;
+    padding: 25px 0 !important;
+    text-transform: uppercase;
+    font-family: roboto-bold;
+    font-size: .85em !important;
+    cursor: pointer;
+}
+
+.sis-menu-container:hover .sis-menu-list {
+    position: absolute;
+    width: 100%;
+    display: block !important;
+    list-style-type: none !important;
+    z-index: 5;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    animation-name: slide;
+    animation-duration: .20s;
+    background-color: #555;
+    opacity: .6;
+}
+
+.sis-menu-container:hover .sis-menu-label {
+    background-color: #42687d;
+    transition: .5s;
+}
+
+.sis-list-item {
+     display: block;
+     width: 100%;
+     text-decoration: none !important;
+     color: #FFF;
+     padding: 3px 0 !important;
+}
+
+.sis-list-item:hover {
+    background-color: #4E758A;
+    color: #FFF;
+    transition: .65s;
+}
+
+/* fim => edita menu hover do site */
+
+/* inicio => edita container de conteudo */
+
+.sis-market-name {
+    font-size: 2.5em !important;
+    font-family: roboto-black;
+    text-align: center;
+    text-transform: uppercase;
+    color: #55B57A;
+    margin: 100px 0 0 !important;
+}
+
+.sis-title {
+    font-size: 2em !important;
+    font-family: roboto-bold;
+    text-align: center;
+    color: #4E758A;
+    margin:  0 0 30px !important;
+}
+
+.sis-container-content {
+    width: fit-content;
+    overflow: auto;
+    margin: 50px auto !important;
+}
+
+.sis-paragraph {
+    clear: unset;
+    display: inline-block;
+    font-family: roboto-light !important;
+    margin: 25px auto 0 !important;
+    padding: 0 30px !important;
+    font-size: 1.15em !important;
+    text-align: justify;
+    max-width: 400px;
+    float: left;
+}
+
+.sis-subtitle {
+    display: block;
+    text-align: center;
+    font-size: 1.5em !important;
+    font-family: roboto-light-italic;
+    padding: 0 10px !important;
+}
+
+.sis-content-collumn .sis-title {
+    font-family: roboto-thin;
+}
+
+.sis-description {
+    font-family: roboto-light;
+    text-align: center;
+}
+
+.sis-sidebar-img {
+    display: inline-block;
+    width: 80%;
+    height: auto;
+    margin: 15px auto 0 !important;
+    padding: 0 20px !important;
+}
+
+.sis-center-img {
+    display: block;
+    width: 25%;
+    height: 25%;
+    margin: 0 auto 30px!important;
+}
+
+.sis-content-collumn {
+    display: block;
+    max-width: 350px;
+    min-height: 300px;
+    clear: unset !important;
+    float: left;
+    margin: 30px 10px !important;
+    padding: 30px 15px !important;
+    border: 1px solid #CCC;
+    border-radius: 8px;
+}
+/* final => edita container de conteudo */
+
+/* inicio => edita o footer da página */
+
+.sis-footer {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 35px !important;
+    text-align: center;
+    font-family: roboto-thin-italic;
+    background-color: #4E758A;
+    color: #FFF;
+}
+
+.sis-footer span {
+    font-family: roboto-bold-italic;
+}
+
+/* final => edita o footer da página */
+
+/* inicio => edita formularios de criação */
+
+input {
+    margin-bottom: 1.5em;
+    width: 60%;
+    border-style: none;
+    border-bottom: 2px solid #DDD;
+    outline: none;
+}
+
+input:focus {
+	border-bottom: 2px solid #4ddd80;
+	transition: 0.8s;
+}
+
+input[type=date] {
+	color: #CCC;
+}
+
+input[type=submit],
+input[type=reset] {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0 0.5em 0 0;
+    padding: 0.7em 0.8em;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    background-color: #6db888;
+    color: #FFF;
+    float: left;
+    text-transform: lowercase;
+}
+
+input[type=submit]:hover,
+input[type=reset]:hover {
+	background-color: #4ddd80;
+	transition: 1s;
+}
+
+/* final => edita formularios de criação */
+
+/* inicio => destinado em criação de keyframes */
+
+@keyframes slide {
+    0%      { top: -70%; }
+    100%    { top: 100%; }
+}
+
+/* final => destinado em criação de keyframes */
+
+/* breakpoints */
+ 
+ @media only screen and (max-width: 768px) {
+     .sis-header {
+         position: relative;
+     }
+     .sis-menu-container {
+         display: block;
+     }
+     .sis-paragraph {
+        clear: both;
+        display: block;
+        float: unset;
+     }
+     .sis-content-collumn {
+        float: unset;
+        margin: 30px auto 10px !important;
+      }
+ }
