@@ -9,9 +9,9 @@
 	<script type="text/javascript" src="./frontLibs/jquery-3.5.0.min.js"></script>
 	<script type="text/javascript" src="./frontLibs/popper-2.3.3.js"></script>
 	<link type="text/css" rel="stylesheet" href="./frontLibs/bootstrap-4.4.1/css/bootstrap.min.css" />
-	<link type="text/css" rel="stylesheet" href="./stylesheet/fonts.css" />
-	<link type="text/css" rel="stylesheet" href="./stylesheet/reset.css" />
-	<link type="text/css" rel="stylesheet" href="./stylesheet/mainstyle.css" />
+	<link type="text/css" rel="stylesheet" href="./css/fonts.css" />
+	<link type="text/css" rel="stylesheet" href="./css/reset.css" />
+	<link type="text/css" rel="stylesheet" href="./css/mainstyle.css" />
 </head>
 <body>
 <div class="sis-header col-md-12">
