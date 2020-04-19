@@ -92,8 +92,5 @@
 		</p>
 	</div>
 </div>
-<div class="sis-footer col-md 12">
-	esse template foi adaptado e desolvido pela equipe <span>111</span>
-</div>
 </body>
 </html>

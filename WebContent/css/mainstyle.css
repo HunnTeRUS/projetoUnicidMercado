@@ -152,37 +152,37 @@
 }
 /* final => edita container de conteudo */
 
-/* inicio => edita o footer da página */
+/* inicio => edita o footer da pï¿½gina */
 
-.sis-footer {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 35px !important;
-    text-align: center;
-    font-family: roboto-thin-italic;
-    background-color: #4E758A;
-    color: #FFF;
+.sis-page-container {
+	position: relative;
+	min-height: 100%;
 }
 
-.sis-footer span {
-    font-family: roboto-bold-italic;
+/* final => edita o footer da pï¿½gina */
+
+/* inicio => edita formularios de criaï¿½ï¿½o */
+
+label, input {
+    display: inline-block;
 }
 
-/* final => edita o footer da página */
-
-/* inicio => edita formularios de criação */
+label {
+	width: 35%;
+	font-family: roboto-black;
+}
 
 input {
-    margin-bottom: 1.5em;
+    margin-bottom: 1.65em !important;
     width: 60%;
     border-style: none;
     border-bottom: 2px solid #DDD;
+    color: #888;
     outline: none;
 }
 
 input:focus {
-	border-bottom: 2px solid #4ddd80;
+	border-bottom: 2px solid #4E758A;
 	transition: 0.8s;
 }
 
@@ -195,34 +195,79 @@ input[type=reset] {
     display: inline-block;
     width: auto;
     height: auto;
-    margin: 0 0.5em 0 0;
-    padding: 0.7em 0.8em;
-    border: none;
+    margin: 0 0.5em 0 0 !important;
+    padding: 0.4em 0.8em !important;
+    float: left;
+    background-color: #FFF;
+    color: #444;
+    border-style: none;
+    border: 1px solid #CCC;
     border-radius: 5px;
     outline: none;
     cursor: pointer;
-    background-color: #6db888;
-    color: #FFF;
-    float: left;
     text-transform: lowercase;
 }
 
 input[type=submit]:hover,
 input[type=reset]:hover {
-	background-color: #4ddd80;
-	transition: 1s;
+	background-color: #EEE;
+    transition: .5s;
 }
 
-/* final => edita formularios de criação */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
 
-/* inicio => destinado em criação de keyframes */
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	font-size: 1em;
+	-webkit-box-shadow: 0 1000px #FFF inset;
+}
+
+table { width: 100%; }
+
+table, th, td{
+    border-collapse: collapse;
+    border: 1px solid #DDD;
+}
+
+th, td {
+    padding: 6px 0;
+}
+
+th {
+    text-transform: uppercase;
+    font-size: 0.9em;
+    background-color: #F1F1F1;
+    color: #000;
+}
+
+td { text-align: center; }
+
+tr:hover {
+    background-color: #6db888;
+    color: #FFF;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* final => edita formularios de criaï¿½ï¿½o */
+
+/* inicio => destinado em criaï¿½ï¿½o de keyframes */
 
 @keyframes slide {
     0%      { top: -70%; }
     100%    { top: 100%; }
 }
 
-/* final => destinado em criação de keyframes */
+/* final => destinado em criaï¿½ï¿½o de keyframes */
 
 /* breakpoints */
  
