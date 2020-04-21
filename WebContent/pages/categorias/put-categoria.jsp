@@ -1,62 +1,79 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="resp" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
 
-Name       : TwoColours 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20130811
-
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="${pageContext.request.contextPath}/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link
+	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/default.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link href="${pageContext.request.contextPath}/fonts.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-
 </head>
+
 <body>
-<div id="header">
-	<div id="menu" class="container">
-		<ul>
-			<li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-			<li><a href="#" accesskey="2" title="">Categorias</a></li>
-			<li><a href="#" accesskey="3" title="">Fornecedores</a></li>
-			<li><a href="#" accesskey="4" title="">Produtos</a></li>
-		</ul>
+	<div id="header">
+		<div id="menu" class="container">
+			<ul>
+				<li class="current_page_item"><a href="#" accesskey="1"
+					title="">Homepage</a></li>
+				<li><a href="#" accesskey="2" title="">Categorias</a></li>
+				<li><a href="#" accesskey="3" title="">Fornecedores</a></li>
+				<li><a href="#" accesskey="4" title="">Produtos</a></li>
+			</ul>
+		</div>
 	</div>
-</div>
-<div id="logo" class="container">
-	<h1><a href="#" class="icon icon-shopping-cart"><span>Alterar Categoria</span></a></h1>
-</div>
-<div id="page" class="container">
-	    <form action="${pageContext.request.contextPath}/put-categorias">
-    	<c:forEach items="${jspCategorias}" var="categorias">
-        		<input type="hidden" name="id" id="id" required value="${categorias.id}" />
-        		<label for="nome">Novo nome da categoria</label>
-				<input type="text" name="nome" id="nome" value="${categorias.nome}" required></input>
-        		<input type="submit" value="Alterar" />
-		</c:forEach>
-	</form>
-</div>
+	<div id="logo" class="container">
+		<h1>
+			<a href="#" class="icon icon-pencil"><span>Atualizar Categoria</span></a>
+		</h1>
+	</div>
+	<div id="page" class="container">
+
+		<div class="sis-container-content col-md-12">
+			<form action="${pageContext.request.contextPath}/put-categorias">
+				<c:forEach items="${jspCategorias}" var="categorias">
+					<input type="hidden" name="id" id="id" required
+						value="${categorias.id}" />
+						
+					<a style="margin-left: 25%;">Novo nome da categoria</a>					
+					<div class="center">
+					<input type="text" style="width: 50%;" name="nome" id="nome" value="${categorias.nome}"
+						required></input>		
+					<br/>			
+					<input class="button" type="submit" value="Alterar" />
+					</div>
+					<br/>
+					
+				</c:forEach>
+			</form>
+		</div>
+
+		<div class="center">
+			<a class="button" href="${pageContext.request.contextPath}/list-categorias">Voltar</a>
+		</div>
+
+	</div>
 
 
-<div id="copyright" class="container" >
-	<p>Copyright (c) 2020 Tuncat. All rights reserved. Github Project: <a href="https://github.com/HunnTeRUS/projetoUnicidMercado">ProjetoUnicidMercado</a>.</p>
-</div>
+	<div id="copyright" class="container">
+		<p>
+			Copyright (c) 2020 Tuncat. All rights reserved. Github Project: <a
+				href="https://github.com/HunnTeRUS/projetoUnicidMercado">ProjetoUnicidMercado</a>.
+		</p>
+	</div>
 </body>
+
 </html>

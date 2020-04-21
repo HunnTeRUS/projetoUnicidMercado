@@ -13,8 +13,12 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="${pageContext.request.contextPath}/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="${pageContext.request.contextPath}/default.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link href="${pageContext.request.contextPath}/fonts.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 </head>
@@ -33,20 +37,27 @@
 	</div>
 	<div id="logo" class="container">
 		<h1>
-			<a href="#" class="icon icon-shopping-cart"><span>Inserir Nova Categoria</span></a>
+			<a href="#" class="icon icon-plus-sign"><span>Inserir
+					Nova Categoria</span></a>
 		</h1>
 	</div>
 	<div id="page" class="container">
-		<a for="nome" style="margin-left: 20%;">Nome da Categoria</a>
 		<form action="${pageContext.request.contextPath}/persist-categorias">
-			<input placeholder="Nome da Categoria" style="margin-left: 20%;" type="text" name="nome" id="nome" required />
-				<br/>
-				<resp:out style="margin-left: 20%;" value="${mensagem == '' ? '' : mensagem }" />
-			<br/>
-			
-			<input class="button" style="margin: 5% 35%;" type="submit" value="Cadastrar" />
+			<div class="center">
+				<input placeholder="Nome da Categoria" style="width: 50%;"
+					type="text" name="nome" id="nome" required />
+			</div>
+			<br />
+			<div class="center">
+				<resp:out value="${mensagem == '' ? '' : mensagem }" />
+			</div>
+			<br />
+
+			<div class="center">
+				<input class="button" type="submit" value="Cadastrar" />
+			</div>
 		</form>
-		
+
 
 	</div>
 

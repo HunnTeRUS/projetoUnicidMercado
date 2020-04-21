@@ -1,97 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@ taglib prefix="resp" uri="http://java.sun.com/jsp/jstl/core"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Atualizar</title>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/frontLibs/jquery-3.5.0.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/frontLibs/popper-2.3.3.js"></script>
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/frontLibs/bootstrap-4.4.1/css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/fonts.css" />
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/reset.css" />
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/mainstyle.css" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link
+	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/default.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link href="${pageContext.request.contextPath}/fonts.css"
+	rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 </head>
+
 <body>
-	<div class="sis-header col-md-12">
-		<div class="sis-menu-bar col-md-12">
-			<div class="sis-menu-container col-md-3 col-sm-12">
-				<label class="sis-menu-label">Home</label>
-			</div>
-			<div class="sis-menu-container col-md-3 col-sm-12">
-				<label class="sis-menu-label">Categorias</label>
-				<ul class="sis-menu-list" style="display: none;">
-					<li><a
-						href="${pageContext.request.contextPath}/list-categorias"
-						class="sis-list-item">listar</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/pages/categorias/persist-categoria.jsp"
-						class="sis-list-item">inserir</a></li>
-				</ul>
-			</div>
-			<div class="sis-menu-container col-md-3 col-sm-12">
-				<label class="sis-menu-label">Estoques</label>
-				<ul class="sis-menu-list" style="display: none;">
-					<li><a href="${pageContext.request.contextPath}/list-estoque"
-						class="sis-list-item">listar</a></
-						<li><a
-							href="${pageContext.request.contextPath}/persist-estoque"
-							class="sis-list-item">inserir</a></li>
-				</ul>
-			</div>
-			<div class="sis-menu-container col-md-3 col-sm-12">
-				<label class="sis-menu-label">Fornecedores</label>
-				<ul class="sis-menu-list" style="display: none;">
-					<li><a
-						href="${pageContext.request.contextPath}/list-fornecedores"
-						class="sis-list-item">listar</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/pages/fornecedores/persist-fornecedor.jsp"
-						class="sis-list-item">inserir</a></li>
-				</ul>
-			</div>
+	<div id="header">
+		<div id="menu" class="container">
+			<ul>
+				<li class="current_page_item"><a href="#" accesskey="1"
+					title="">Homepage</a></li>
+				<li><a href="#" accesskey="2" title="">Categorias</a></li>
+				<li><a href="#" accesskey="3" title="">Fornecedores</a></li>
+				<li><a href="#" accesskey="4" title="">Produtos</a></li>
+			</ul>
 		</div>
 	</div>
-	<div class="sis-container-content col-md-12">
-		<h3 class="sis-title col-md-12">Atualizar Fornecedor</h3>
+	<div id="logo" class="container">
+		<h1>
+			<a href="#" class="icon icon-pencil"><span>Atualizar Fornecedor</span></a>
+		</h1>
 	</div>
-	<div class="sis-container-content col-md-12">
-		<form action="${pageContext.request.contextPath}/put-fornecedores">
-			<c:forEach items="${jspFornecedor}" var="fornecedores">
-				<input type="hidden" name="id" id="id" required
-					value="${fornecedores.id}" />
+	<div id="page" class="container">
 
-				<label>Nome</label>
-				<input type="text" name="nome" id="nome"
-					value="${fornecedores.nome}" required></input>
+		<div class="sis-container-content col-md-12">
+			<form action="${pageContext.request.contextPath}/put-fornecedores">
+				<c:forEach items="${jspFornecedor}" var="fornecedores">
+					<input type="hidden" name="id" id="id" required
+						value="${fornecedores.id}" />
 
-				<label>Localização</label>
-				<input type="text" name="localizacao" id="localizacao"
-					value="${fornecedores.nome}" required></input>
+					<label>Nome</label>
+					<input type="text" name="nome" id="nome"
+						value="${fornecedores.nome}" required></input>
 
-				<label>Tipo Fornecimento</label>
-				<select name="tipoFornecimento">
-					<option value="1">Alimenticio</option>
-					<option value="2">Limpeza</option>
-					<option value="3">Cosmeticos</option>
-					<option value="4">Pet</option>
-					<option value="5">Diversos</option>
-				</select>
-				<br/>
-				
-				<input type="submit" value="Alterar" />
-			</c:forEach>
-		</form>
+					<label>Localização</label>
+					<input type="text" name="localizacao" id="localizacao"
+						value="${fornecedores.nome}" required></input>
+
+					<label>Tipo Fornecimento</label>
+					<select name="tipoFornecimento">
+						<option value="1">Alimenticio</option>
+						<option value="2">Limpeza</option>
+						<option value="3">Cosmeticos</option>
+						<option value="4">Pet</option>
+						<option value="5">Diversos</option>
+					</select>
+					<br/>
+					
+					<input class="button" type="submit" value="Alterar" />
+				</c:forEach>
+			</form>
+		</div>
+
+			<a class="button" href="${pageContext.request.contextPath}/list-fornecedores">Voltar</a>
+	</div>
+
+
+	<div id="copyright" class="container">
+		<p>
+			Copyright (c) 2020 Tuncat. All rights reserved. Github Project: <a
+				href="https://github.com/HunnTeRUS/projetoUnicidMercado">ProjetoUnicidMercado</a>.
+		</p>
 	</div>
 </body>
+
 </html>

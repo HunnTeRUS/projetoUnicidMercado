@@ -25,6 +25,8 @@ Released   : 20130811
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="${pageContext.request.contextPath}/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
@@ -43,14 +45,17 @@ Released   : 20130811
 	</div>
 	<div id="logo" class="container">
 		<h1>
-			<a href="#" class="icon icon-shopping-cart"><span>Informações - Categorias</span></a>
+			<a href="#" class="icon icon-info-sign"><span>Informações - Categorias</span></a>
 		</h1>
 	</div>
 	<div id="page" class="container">
 		<div>
-			<resp:out value="${mensagem}" />
+			<h5 href="#" class="title"><span><resp:out value="${mensagem}" /></span></h5>
 		</div>
-		<a href="${pageContext.request.contextPath}/list-categorias">Voltar</a>
+		<br/>
+		<div class="center">
+			<a class="button" href="${pageContext.request.contextPath}/list-categorias">Voltar</a>
+		</div>
 	</div>
 
 
