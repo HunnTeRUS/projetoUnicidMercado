@@ -43,7 +43,7 @@ public class ServletPutEstoques extends HttpServlet {
             services.put(id, estoque);
 
             request.setAttribute("mensagem", "Produto " + request.getParameter("nome") + " atualizado com sucesso!");
-            RequestDispatcher rd = request.getRequestDispatcher("put-estoque.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/estoques/auxiliar-estoque.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

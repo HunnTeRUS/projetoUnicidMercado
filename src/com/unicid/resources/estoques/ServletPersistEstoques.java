@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.unicid.model.Estoque;
 import com.unicid.services.ProdutoServicesImpl;
 
-@WebServlet("/persist-estoque")
+@WebServlet("/persist-estoque-insert")
 public class ServletPersistEstoques extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -41,7 +41,7 @@ public class ServletPersistEstoques extends HttpServlet {
             services.persist(estoque);
 
             request.setAttribute("mensagem", "Produto " + request.getParameter("nome") + " cadastrado com sucesso!");
-            RequestDispatcher rd = request.getRequestDispatcher("persist-estoque.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/persist-estoque");
             rd.forward(request, response);
 
         } catch(Exception e) {

@@ -32,28 +32,28 @@ public class ServletListCategorias extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     	CategoriaServicesImpl  services = new CategoriaServicesImpl ();
-        List<Categoria> bdListaCategoria;
         ArrayList listaDeCategorias = new ArrayList<>();
-        Categoria categoria = new Categoria();
 
         try {
             if(request.getParameter("id") != null){
+                Categoria categoria = new Categoria();
                 categoria = services.findById(Integer.parseInt(request.getParameter("id")));
 
                 Map categoriaMap = new HashMap();
 
                 categoriaMap.put("id", categoria.getId());
                 categoriaMap.put("nome", categoria.getNome());
-                categoriaMap.put("listProdutos", categoria.getIdsCategorias());
+                categoriaMap.put("listProdutos", categoria.getIdsProdutos());
                 
                 listaDeCategorias.add(categoriaMap);
                 
                 request.setAttribute("jspCategorias", listaDeCategorias);
-                RequestDispatcher rd = request.getRequestDispatcher("list-categorias.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/list-categorias.jsp");
                 rd.forward(request, response);
                 return;
             }
             else {
+                List<Categoria> bdListaCategoria= new ArrayList<>();
                 bdListaCategoria = services.list();
 
                 for (int i = 0; i < bdListaCategoria.size(); i++) {
@@ -64,17 +64,17 @@ public class ServletListCategorias extends HttpServlet {
 
                     categoriaMap.put("id", categoriaTemp.getId());
                     categoriaMap.put("nome", categoriaTemp.getNome());
-                    categoriaMap.put("listProdutos", categoriaTemp.getIdsCategorias());
+                    categoriaMap.put("listProdutos", categoriaTemp.getIdsProdutos());
 
                     listaDeCategorias.add(categoriaMap);
                 }
+
+                request.setAttribute("jspCategorias", listaDeCategorias);
+                RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/list-categorias.jsp");
+                rd.forward(request, response);
             }
         } catch(Exception e) {
-            e.printStackTrace();
+        	e.printStackTrace();
         }
-
-        request.setAttribute("jspCategorias", listaDeCategorias);
-        RequestDispatcher rd = request.getRequestDispatcher("listar-categorias.jsp");
-        rd.forward(request, response);
     }
 }

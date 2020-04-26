@@ -31,17 +31,17 @@ public class ServletDeleteCategorias extends HttpServlet {
 
             CategoriaServicesImpl  services = new CategoriaServicesImpl ();
 
-            Categoria categoriaExcluida = services.findById(id);
-
             services.delete(id);
 
-            request.setAttribute("mensagem", "Categoria excluída: " + categoriaExcluida.getNome());
+            request.setAttribute("mensagem", "Categoria excluída com sucesso!");
 
-            RequestDispatcher rd = request.getRequestDispatcher("delete-categoria.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/auxiliar-categoria.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {
-            e.printStackTrace();
+            request.setAttribute("mensagem", "Essa categoria não pode ser excluida, pois há produtos associados a ela!");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/auxiliar-categoria.jsp");
+            rd.forward(request, response);
         }
     }
 }

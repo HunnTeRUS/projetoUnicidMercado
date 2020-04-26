@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.unicid.enums.TipoProduto;
 import com.unicid.model.Fornecedor;
 import com.unicid.services.FornecedorServicesImpl;
 
@@ -76,7 +77,7 @@ public class ServletListFornecedores extends HttpServlet {
         }
 
         request.setAttribute("jspFornecedores", listaDeFornecedores);
-        RequestDispatcher rd = request.getRequestDispatcher("list-fornecedores.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/pages/fornecedores/list-fornecedores.jsp");
         rd.forward(request, response);
     }
 }

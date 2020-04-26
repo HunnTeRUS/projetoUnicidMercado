@@ -1,0 +1,22 @@
+/* inicio => definicao de cores padrao do site */
+
+:root {
+	--sis-regular: #000000;
+	--sis-contrast: #FFFFFF;
+	--sis-contrast-medium: #EBEBEB;
+	--sis-contrast-dark: #BBBBBB;
+	--sis-primary: #FDAE10;
+	--sis-primary-light: #FCC044;
+	--sis-secondary: #18CAAF;
+	--sis-secondary-dark: #15B39B
+}
+
+/* final => definicao de cores padrao do site */
+
+/* inicio => algumas classes de personalizacao individual */
+
+.diff { background-color: var(--sis-primary); }
+
+.diff .sis-title { color: var(--sis-contrast); }
+
+/* final => algumas classes de personalizacao individual */

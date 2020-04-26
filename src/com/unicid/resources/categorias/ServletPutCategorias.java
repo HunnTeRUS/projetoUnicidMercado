@@ -34,9 +34,9 @@ public class ServletPutCategorias extends HttpServlet {
             categoria.setNome(request.getParameter("nome"));
 
             services.put(id, categoria);
-
+            
             request.setAttribute("mensagem", "Categoria " + request.getParameter("nome") + " alterada com sucesso!");
-            RequestDispatcher rd = request.getRequestDispatcher("put-categoria.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/auxiliar-categoria.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {

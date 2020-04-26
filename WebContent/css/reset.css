@@ -1,0 +1,57 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-family: roboto-light;
+	clear: both;
+}
+
+header, body, footer {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+/* inicio => estilizando scrollbar da página */
+
+::-webkit-scrollbar { width: 10px; }
+
+::-webkit-scrollbar-track { background: #f1f1f1; }
+
+::-webkit-scrollbar-thumb {
+  background: var(--sis-secondary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover { background: var(--sis-secondary-dark) }
+
+/* final => estilizando scrollbar da página*/
+
+/* inicio => removendo setas do input number */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+/* final => removendo setas do input number */
+
+/* inicio => removendo estilizacao do autocomplete */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	font-size: 1em;
+	-webkit-box-shadow: 0 1000px var(--sis-contrast) inset;
+}
+
+/* final => removendo estilizacao do autocomplete */
+
+

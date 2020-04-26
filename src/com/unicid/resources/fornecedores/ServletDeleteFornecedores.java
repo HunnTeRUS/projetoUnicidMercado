@@ -31,17 +31,17 @@ public class ServletDeleteFornecedores extends HttpServlet {
 
             FornecedorServicesImpl services = new FornecedorServicesImpl ();
 
-            Fornecedor fornecedorExcluido = services.findById(id);
-
             services.delete(id);
 
-            request.setAttribute("mensagem", "Fornecedor excluído: " + fornecedorExcluido.getNome());
+            request.setAttribute("mensagem", "Fornecedor excluído com sucesso!");
 
-            RequestDispatcher rd = request.getRequestDispatcher("delete-fornecedor.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/fornecedores/auxiliar-fornecedor.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {
-            e.printStackTrace();
-        }
+        	request.setAttribute("mensagem", "Esse fornecedor não pode ser excluido, pois há produtos associados a ele!");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/fornecedores/auxiliar-fornecedor.jsp");
+            rd.forward(request, response);
+            }
     }
 }

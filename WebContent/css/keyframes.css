@@ -1,0 +1,4 @@
+@keyframes slide-top {
+    0%      { top: 19px; opacity: 0; }
+    100%    { top: 100%; opacity: 1; }
+}

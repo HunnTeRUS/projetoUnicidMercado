@@ -30,12 +30,19 @@ public class ServletPersistCategorias extends HttpServlet {
             Categoria categoria = new Categoria();
             CategoriaServicesImpl  services = new CategoriaServicesImpl ();
 
+            if(request.getParameter("nome") == null) {
+                request.setAttribute("mensagem", "O nome da categoria não pode ser vazio!");
+                RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/persist-categoria.jsp");
+                rd.forward(request, response);
+                return;
+            }
+
             categoria.setNome(request.getParameter("nome"));
 
             services.persist(categoria);
 
             request.setAttribute("mensagem", "Categoria " + request.getParameter("nome") + " cadastrado com sucesso!");
-            RequestDispatcher rd = request.getRequestDispatcher("persist-categoria.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/pages/categorias/persist-categoria.jsp");
             rd.forward(request, response);
 
         } catch(Exception e) {
