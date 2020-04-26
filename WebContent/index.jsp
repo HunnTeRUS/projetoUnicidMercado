@@ -1,169 +1,209 @@
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Name       : TwoColours 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20130811
-
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
-
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-
-</head>
-<body>
-<div id="header">
-	<div id="menu" class="container">
-		<ul>
-			<li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-			<li><a href="#" accesskey="2" title="">Categorias</a></li>
-			<li><a href="#" accesskey="3" title="">Fornecedores</a></li>
-			<li><a href="#" accesskey="4" title="">Produtos</a></li>
-		</ul>
-	</div>
-</div>
-<div id="logo" class="container">
-	<h1><a href="#" class="icon icon-shopping-cart"><span>Supermercados Tuncat</span></a></h1>
-</div>
-<div id="page" class="container">
-	<div id="content">
-		<div class="title">
-			<h2>Bem Vindo ao Supermercados Tuncat</h2>
-			<span class="byline">Um pouco sobre nosso site</span>
-		</div>
-		<p>Nossos serviços visam a organização e gerenciamento de dados. Aqui, você encontra todas as ferramentas necessárias para controlar todas as informações com mais precisão. Você pode incluir, alterar, excluir e listar todas as informações que desejar.</p>
-	</div>
-	<div id="sidebar"><a href="#" class="image image-full"><img src="images/indexGif.gif" alt="" /></a></div>
-</div>
-<div id="featured-wrapper" style="background-color: #D3D3D3;">
-	<div id="featured" class="container">
-		<div class="major">
-			<h2>Nossos Serviços</h2>
-			<span class="byline">Veja alguns de nossos serviços</span>
-		</div>
-		<div class="column1">
-			<span class="icon icon-group"></span>
-			<div class="title">
-				<h2>Fornecedores</h2>
-				<span class="byline">Para reposição de novos produtos, fornecedores são sempre necessários. Temos funcionalidades para listagem, inserção, exclusão e alterações dos mesmos. </span>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/colors.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/keyframes.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/mainstyle.css" />
+		<title>Home</title>
+	</head>
+	<body>
+		<header>
+			<div class="sis-menu-container">
+				<div class="sis-dropdown-container">
+					<a href="${pageContext.request.contextPath}/">
+						<button class="sis-dropdown-button">Home</button>
+					</a>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Categorias</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/pages/categorias/persist-categoria.jsp">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-categorias">listar</a></li>
+					</ul>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Estoques</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/persist-estoque">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-estoque">listar</a></li>
+					</ul>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Fornecedores</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/pages/fornecedores/persist-fornecedor.jsp">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-fornecedores">listar</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-		<div class="column2">
-			<span class="icon icon-table"></span>
-			<div class="title">
-				<h2>Categorias</h2>
-				<span class="byline">Para organização de nossos produtos, temos nossas categorias e também suas funcões, assim como os fornecedores.</span>
+		</header>
+		<main>
+			<!-- ApresentaÃ§Ã£o -->
+			<div class="sis-center-content">
+				<img class="sis-logo-img" src="./assets/images/tuncat-logo.png" />
 			</div>
-		</div>
-		<div class="column3">
-			<span class="icon icon-shopping-cart"></span>
-			<div class="title">
-				<h2>Produtos</h2>
-				<span class="byline">E a parte principal de nossos serviços, os produtos! Onde você encontra suas respectivas categorias, fornecedores e suas funcionalidades.</span>
+			<div class="sis-center-content">
+				<div class="sis-content-block">
+					<h3 class="sis-title">Bem Vindo ao Supermercados Tuncat</h3>
+					<h5 class="sis-subtitle">Um pouco sobre nosso site</h5>
+					<p class="sis-text-block">
+						Nossos serviÃ§os visam a organizaÃ§Ã£o e gerenciamento de dados.
+						Aqui, vocÃª encontra todas as ferramentas necessÃ¡rias para controlar
+						todas as informaÃ§Ãµes com mais precisÃ£o. VocÃª pode incluir, alterar, 
+						excluir e listar todas as informaÃ§Ãµes que desejar.
+					</p>
+				</div>
+				<div class="sis-content-block">
+					<img class="sis-regular-img" src="./assets/images/market.gif" />
+				</div>
 			</div>
-		</div>
-		<div class="column4">
-			<span class="icon icon-envelope"></span>
-			<div class="title">
-				<h2>Documentações</h2>
-				<span class="byline">Nosso sistema é documentado, listando todas os serviços e como utilizar! </span>
+			<!-- ServiÃ§os -->
+			<div class="sis-center-content">
+				<div class="sis-block-content">
+					<h3 class="sis-title">Nossos ServiÃ§os</h3>
+					<h5 class="sis-subtitle">Veja alguns de nossos serviÃ§os</h5>
+					<div class="sis-center-content">
+						<div class="sis-column">
+							<span class="sis-providers-svg"></span>
+							<h3 class="sis-title">Fornecedores</h3>
+							<p class="sis-description">
+								Para reposiÃ§Ã£o de novos produtos, fornecedores sÃ£o sempre necessÃ¡rios.
+								 Temos funcionalidades para listagem, inserÃ§Ã£o, exclusÃ£o e alteraÃ§Ãµes
+								 dos mesmos.
+							</p>
+						</div>
+						<div class="sis-column">
+							<span class="sis-category-svg"></span>
+							<h3 class="sis-title">Categorias</h3>
+							<p class="sis-description">
+								Para organizaÃ§Ã£o de nossos produtos, temos nossas categorias e 
+								tambÃ©m suas funcÃµes, assim como os fornecedores.
+							</p>
+						</div>
+						<div class="sis-column">
+							<span class="sis-products-svg"></span>
+							<h3 class="sis-title">Produtos</h3>
+							<p class="sis-description">
+								E a parte principal de nossos serviÃ§os, os produtos! Onde vocÃª 
+								encontra suas respectivas categorias, fornecedores e suas funcionalidades.
+							</p>
+						</div>
+						<div class="sis-column">
+							<span class="sis-docs-svg"></span>
+							<h3 class="sis-title">DocumentaÃ§Ãµes</h3>
+							<p class="sis-description">
+								Nosso sistema Ã© documentado, listando todas os serviÃ§os e como utilizar!
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-</div>
-<div id="portfolio-wrapper">
-	<div id="portfolio" class="container">
-		<div class="major">
-			<h2>Acesse nossas funcionalidades</h2>
-			<span class="byline">Usufrua de nossas funcionalidades listadas acima</span>
-		</div>
-		<div class="column1">
-			<a href="#" class="image image-full"><img src="images/fornecedoresIndex.png" height="150" alt="" /></a>
-			<div class="box">
-				<p>Acesse a listagem dos fornecedores atuais, exclusão, alteração e inserção. Cada um com seu tipo de fornecimento!</p>
-				<a href="#" class="button">Ver Mais</a>
+			<!-- Funcionalidades -->
+			<div class="sis-center-content">
+				<div class="sis-block-content">
+					<h3 class="sis-title">Acesse nossas funcionalidades</h3>
+					<p class="sis-subtitle">
+						Usufrua de nossas funcionalidades listadas acima 
+					</p>
+					<div class="sis-center-content">
+						<div class="sis-column">
+							<img class="sis-moderate-img" src="./assets/images/providers.png" />
+							<p class="sis-description">
+								Acesse a listagem dos fornecedores atuais, exclusÃ£o, alteraÃ§Ã£o
+								e inserÃ§Ã£o. Cada um com seu tipo de fornecimento!
+							</p>
+							<a class="sis-acess-button" href="">Veja Mais</a>
+						</div>
+						<div class="sis-column">
+							<img class="sis-moderate-img" src="./assets/images/category.png" />
+							<p class="sis-description">
+								Listagem de categorias e dentro delas, seus produtos. Liste
+								insira, exclua ou altere categorias como quiser.
+							</p>
+							<a class="sis-acess-button" href="">Veja Mais</a>
+						</div>
+						<div class="sis-column">
+							<img class="sis-moderate-img" src="./assets/images/products.png" />
+							<p class="sis-description">
+								Todos os seus produtos, cada um com a sua respectiva categoria e
+								fornecedor. Teste tambÃ©m suas funcionalidades!
+							</p>
+							<a class="sis-acess-button" href="">Veja Mais</a>
+						</div>
+						<div class="sis-column">
+							<img class="sis-moderate-img" src="./assets/images/docs.png" />
+							<p class="sis-description">
+								Acesse a nossa documentaÃ§Ã£o, se preferir. Nela estÃ£o listadas
+								todas as funcionalidades e recursos.
+							</p>
+							<a class="sis-acess-button" href="">Veja Mais</a>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>			
-		<div class="column2">
-			<a href="#" class="image image-full"><img src="images/categoriasIndex.png" height="150" alt="" /></a>
-			<div class="box">
-				<p>Listagem das categorias e dentro delas, seus produtos. Liste, insira, exclua ou altere as categorias como quiser.</p>
-				<a href="#" class="button">Ver Mais</a>
+			<!-- PortifÃ³lios -->
+			<div class="sis-center-content">
+				<div class="sis-block-content">
+					<h3 class="sis-title">Sobre NÃ³s</h3>
+					<p class="sis-subtitle">
+						Esse projeto foi feito para conclusÃ£o de nota semestral na 
+						<a href="https://www.unicid.edu.br/">UNICID</a>
+						<img class="sis-moderate-img" src="./assets/images/unicid-logo.png" />
+					</p>
+					<div class="sis-center-content">
+						<div class="sis-column">
+							<a href="https://github.com/HunnTeRUS">
+								<span class="sis-github-black-svg"></span>
+							</a>
+							<h3 class="sis-title">Otavio Celestino</h3>
+							<p class="sis-description">Github user: HunnTeRUS</p>
+							<a class="sis-acess-button" href="https://github.com/HunnTeRUS" target="_blank">Acessar</a>
+						</div>
+						<div class="sis-column diff">
+							<a href="https://github.com/N4MeL3SsCrow">
+								<span class="sis-github-white-svg"></span>
+							</a>
+							<h3 class="sis-title">Yuri CÃ¢mara</h3>
+							<p class="sis-description">Github user: N4MeL3SsCrow</p>
+							<a class="sis-acess-button" href="https://github.com/N4MeL3SsCrow" target="_blank">Acessar</a>
+						</div>
+						<div class="sis-column">
+							<a href="https://github.com/LordRadamanthys">
+								<span class="sis-github-black-svg"></span>
+							</a>
+							<h3 class="sis-title">Mateus Lima</h3>
+							<p class="sis-description">Github user: LordRadamanthys</p>
+							<a class="sis-acess-button" href="https://github.com/LordRadamanthys" target="_blank">Acessar</a>
+						</div>
+						<div class="sis-column diff">
+							<a href="https://github.com/zombiePumpkin">
+								<span class="sis-github-white-svg"></span>
+							</a>
+							<h3 class="sis-title">JosÃ© Augusto</h3>
+							<p class="sis-description">Github user: zombiePumpkin</p>
+							<a class="sis-acess-button" href="https://github.com/zombiePumpkin" target="_blank">Acessar</a>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>			
-		<div class="column3">
-			<a href="#" class="image image-full"><img src="images/produtosIndex.png" height="150" alt="" /></a>
-			<div class="box">
-				<p>Todos os nossos produtos, cada um com sua respectiva categoria e fornecedor. Teste também suas funcionalidades!</p>
-				<a href="#" class="button">Ver Mais</a>
+		</main>
+		<footer>
+			<div class="sis-footer-content">
+				<p class="sis-copyright">
+					Copyright (c) 2020 Tuncat. All rights reserved. Github Project: 
+					<a href="https://github.com/HunnTeRUS/projetoUnicidMercado">
+						ProjetoUnicidMercado
+					</a>
+				</p>
 			</div>
-		</div>			
-		<div class="column4">
-			<a href="#" class="image image-full"><img src="images/documentacaoIndex.png" height="150" alt="" /></a>
-			<div class="box">
-				<p>Acesse e baixe nossa documentação, se preferir. Nela estão listadas todas as funcionalidades e recursos.</p>
-				<a href="#" class="button">Ver Mais</a>
-			</div>
-		</div>			
-	</div>
-</div>
-<div id="portfolio-wrapper" style="background-color: #D3D3D3;">
-	<div id="portfolio" class="container">
-		<div class="major">
-			<h2>Sobre Nós</h2>
-			<span class="byline"><a>Esse projeto foi feito para conclusão de nota semestral na <a href="https://www.unicid.edu.br/">UNICID</a></a></span>
-			<span class="byline">.</span>
-			<span class="byline">Participantes do Projeto</span>
-		</div>
-		<div class="column1">
-			<a href="https://github.com/HunnTeRUS" class="image image-full"><img src="images/github.png" height="150" alt="" /></a>
-			<div class="box">
-				<p>Otavio Celestino dos Santos</p>
-				<p>Github user: HunnTeRUS</p>
-				<a href="https://github.com/HunnTeRUS" target="_blank" class="button">Acessar</a>
-			</div>
-		</div>			
-		<div class="column2">
-			<a href="https://github.com/N4MeL3SsCrow" class="image image-full"><img src="images/github2.png" height="150" alt="" /></a>
-			<div class="box">
-				<p>Yuri Câmara Alves da Silva</p>
-				<p>Github user: N4MeL3SsCrow</p>
-				<a href="https://github.com/N4MeL3SsCrow" target="_blank" class="button">Acessar</a>
-			</div>
-		</div>			
-		<div class="column3" href="https://github.com/LordRadamanthys">
-			<a href="https://github.com/LordRadamanthys" class="image image-full"><img src="images/github.png" height="150" alt="" /></a>
-			<div class="box">
-				<p>Mateus Lima Matos</p>
-				<p>Github user: LordRadamanthys</p>
-				<a href="https://github.com/LordRadamanthys" target="_blank" class="button">Acessar</a>
-			</div>
-		</div>			
-		<div class="column4">
-			<a href="https://github.com/zombiePumpkin" class="image image-full"><img src="images/github2.png" height="150" alt="" /></a>
-			<div class="box">
-				<p>José Augusto</p>
-				<p>Github user: zombiePumpkin</p>
-				<a href="https://github.com/zombiePumpkin" target="_blank" class="button">Acessar</a>
-			</div>
-		</div>			
-	</div>
-</div>
-
-<div id="copyright" class="container" style="width: 100%; background-color: #D3D3D3;">
-	<p>Copyright (c) 2020 Tuncat. All rights reserved. Github Project: <a href="https://github.com/HunnTeRUS/projetoUnicidMercado">ProjetoUnicidMercado</a>.</p>
-</div>
-</body>
+		</footer>
+	</body>
 </html>

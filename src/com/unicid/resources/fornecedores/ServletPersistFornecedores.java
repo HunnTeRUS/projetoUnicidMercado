@@ -54,8 +54,9 @@ public class ServletPersistFornecedores extends HttpServlet {
     	if(id != TipoProduto.ALIMENTICIO.getCod() &&
     			id != TipoProduto.COSMETICOS.getCod() &&
     				id != TipoProduto.DIVERSOS.getCod() && 
-    					id != TipoProduto.LIMPEZA.getCod() && 
-    						id != TipoProduto.DIVERSOS.getCod())
+    					id != TipoProduto.LIMPEZA.getCod() &&
+    						id != TipoProduto.PET.getCod() &&
+    							id != TipoProduto.DIVERSOS.getCod())
     		return false;
     	return true;
     }

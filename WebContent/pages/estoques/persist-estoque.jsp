@@ -1,113 +1,114 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 <%@ taglib prefix="resp" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link
-	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/default.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${pageContext.request.contextPath}/fonts.css"
-	rel="stylesheet" type="text/css" media="all" />
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-    	var elems = document.querySelectorAll('select');
-    	var instances = M.FormSelect.init(elems, options);
- 	 });
-</script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-</head>
-
-<body>
-	<div id="header">
-		<div id="menu" class="container">
-			<ul>
-				<li class="current_page_item"><a href="#" accesskey="1"
-					title="">Homepage</a></li>
-				<li><a href="#" accesskey="2" title="">Categorias</a></li>
-				<li><a href="#" accesskey="3" title="">Fornecedores</a></li>
-				<li><a href="#" accesskey="4" title="">Produtos</a></li>
-			</ul>
-		</div>
-	</div>
-	<div id="logo" class="container">
-		<h1>
-			<a href="#" class="icon icon-plus-sign"><span>Inserir Nova
-					Categoria</span></a>
-		</h1>
-	</div>
-	<div id="page" class="container">
-
-		<form
-			action="${pageContext.request.contextPath}/persist-estoque-insert">
-			<div class="center">
-
-				<input style="width: 50%;" type="text" name="nome" id="nome"
-					class="inputCategorias" placeholder="Nome do Produto" required /> <input
-					style="width: 50%;" type="text" name="marca" id="marca"
-					class="inputCategorias" placeholder="Marca do Produto" required />
-
-				<input style="width: 50%;" type="text" name="descricao"
-					id="descricao" class="inputCategorias"
-					placeholder="Descriçâo do Produto" required /> <input
-					style="width: 50%;" type="number" name="preco" id="preco"
-					class="inputCategorias" placeholder="Preço" required /> <input
-					style="width: 50%;" type="number" name="quantidade" id="quantidade"
-					class="inputCategorias" placeholder="Quantidade desse Produto"
-					required /> <br /> <label>Categoria</label> <select
-					name="idCategoria">
-
-					
-			<label>Categoria</label>
-				
-				<select name="idCategoria">
-					<c:forEach items="${categorias}" var="categoriasList">
-	   					 <option value="${categoriasList.id}">
-	   					 	<c:out value="${categoriasList.nome}"/>
-	   					 </option>
-    				 </c:forEach>
-				</select>
-
-			<br/>
-			
-			<label>Fornecedor(a)</label>
-				<select name="idFornecedor">
-					<c:forEach items="${fornecedores}" var="fornecedorList">
-	   				 	<option value="${fornecedorList.id}">
-	   				 		 <c:out value="${fornecedorList.nome}"/>
-	   				 	</option>
-    				 </c:forEach>
-				</select>
-
-
+	<head>
+		<meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/colors.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/keyframes.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/mainstyle.css" />
+		<title>Inserir Produto</title>
+	</head>
+	<body>
+		<header>
+			<div class="sis-menu-container">
+				<div class="sis-dropdown-container">
+					<a href="${pageContext.request.contextPath}/">
+						<button class="sis-dropdown-button">Home</button>
+					</a>
 				</div>
-				<br /> <input class="button" type="submit" value="Cadastrar" />
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Categorias</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/pages/categorias/persist-categoria.jsp">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-categorias">listar</a></li>
+					</ul>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Estoques</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/persist-estoque">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-estoque">listar</a></li>
+					</ul>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Fornecedores</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/pages/fornecedores/persist-fornecedor.jsp">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-fornecedores">listar</a></li>
+					</ul>
+				</div>
 			</div>
-			<div>
-				<resp:out value="${mensagem}" />
+		</header>
+		<main>
+			<div class="sis-center-content">
+				<div class="sis-content-block">
+					<h3 class="sis-title">
+						<span class="sis-forward-arrow-svg"></span>
+						Inserir um novo Produto
+					</h3>
+					<div class="sis-form">
+						<form action="${pageContext.request.contextPath}/persist-estoque-insert">
+							<label for="nome">Nome do Produto</label>
+							<input type="text" name="nome" id="nome" required />
+							<label for="marca">Marca do produto</label>
+							<input type="text" name="marca" id="marca" required />
+							<label for="descricao">Descrição do Produto</label>
+							<input type="text" name="descricao" id="descricao" required />
+							<div class="sis-center-content left">
+								<label for="preco">Preço do Produto</label>
+								<input type="number" name="preco" id="preco" required />
+								<label for="quantidade">Qtd</label>
+								<input type="number" name="quantidade" id="quantidade" required />
+							</div>
+							<div class="sis-center-content left">
+								<label for="idCategoria">Categoria</label>
+								<select name="idCategoria" id="idCategoria">
+									<option value="">Selecione</option>
+									<c:forEach items="${categorias}" var="categoriasList">
+					   					 <option value="${categoriasList.id}">
+					   					 	<c:out value="${categoriasList.nome}"/>
+					   					 </option>
+				    				 </c:forEach>
+								</select>
+								<label for="idFornecedor">Fornecedor(a)</label>
+								<select name="idFornecedor" id="idFornecedor">
+									<option value="">Selecione</option>
+									<c:forEach items="${fornecedores}" var="fornecedorList">
+					   				 	<option value="${fornecedorList.id}">
+					   				 		 <c:out value="${fornecedorList.nome}"/>
+					   				 	</option>
+				    				 </c:forEach>
+								</select>
+							</div>
+							<div class="sis-center-content left">
+								<input type="submit" value="Cadastrar" />
+								<input type="reset" value="Limpar" />
+							</div>
+							<span class="sis-return-msg">
+								<resp:out value="${mensagem}" />
+							</span>
+						</form>
+					</div>
+				</div>
 			</div>
-		</form>
-
-	</div>
-
-
-	<div id="copyright" class="container">
-		<p>
-			Copyright (c) 2020 Tuncat. All rights reserved. Github Project: <a
-				href="https://github.com/HunnTeRUS/projetoUnicidMercado">ProjetoUnicidMercado</a>.
-		</p>
-	</div>
-</body>
-
+		</main>
+		<footer>
+			<div class="sis-footer-content">
+				<p class="sis-copyright">
+					Copyright (c) 2020 Tuncat. All rights reserved. Github Project: 
+					<a href="https://github.com/HunnTeRUS/projetoUnicidMercado">
+						ProjetoUnicidMercado
+					</a>
+				</p>
+			</div>
+		</footer>
+	</body>
 </html>

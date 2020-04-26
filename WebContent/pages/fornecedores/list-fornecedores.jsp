@@ -1,119 +1,124 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 <%@ taglib prefix="resp" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.unicid.enums.TipoProduto"%>
-
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Listar</title>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/frontLibs/jquery-3.5.0.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/frontLibs/popper-2.3.3.js"></script>
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/frontLibs/bootstrap-4.4.1/css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/fonts.css" />
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/reset.css" />
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/mainstyle.css" />
-</head>
-<body>
-
-	<%!private String difTipos(int id) {
-		if (id == TipoProduto.ALIMENTICIO.getCod())
-			return TipoProduto.ALIMENTICIO.getNome();
-
-		else if (id == TipoProduto.COSMETICOS.getCod())
-			return TipoProduto.COSMETICOS.getNome();
-
-		else if (id == TipoProduto.DIVERSOS.getCod())
-			return TipoProduto.DIVERSOS.getNome();
-
-		else if (id == TipoProduto.LIMPEZA.getCod())
-			return TipoProduto.LIMPEZA.getNome();
-
-		else
-			return TipoProduto.PET.getNome();
-
-	}%>
-
-	<div class="sis-header col-md-12">
-		<div class="sis-menu-bar col-md-12">
-			<div class="sis-menu-container col-md-3 col-sm-12">
-				<label class="sis-menu-label">Home</label>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/colors.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/keyframes.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/mainstyle.css" />
+		<title>Listar Fornecedor</title>
+	</head>
+	<body>
+		<header>
+			<div class="sis-menu-container">
+				<div class="sis-dropdown-container">
+					<a href="${pageContext.request.contextPath}/">
+						<button class="sis-dropdown-button">Home</button>
+					</a>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Categorias</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/pages/categorias/persist-categoria.jsp">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-categorias">listar</a></li>
+					</ul>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Estoques</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/persist-estoque">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-estoque">listar</a></li>
+					</ul>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Fornecedores</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/pages/fornecedores/persist-fornecedor.jsp">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-fornecedores">listar</a></li>
+					</ul>
+				</div>
 			</div>
-			<div class="sis-menu-container col-md-3 col-sm-12">
-			<label class="sis-menu-label">Categorias</label>
-			<ul class="sis-menu-list" style="display: none;">
-				<li><a href="${pageContext.request.contextPath}/list-categorias" class="sis-list-item">listar</a></li>
-				<li><a href="${pageContext.request.contextPath}/pages/categorias/persist-categoria.jsp" class="sis-list-item">inserir</a></li>
-			</ul>
-		</div>
-		<div class="sis-menu-container col-md-3 col-sm-12">
-			<label class="sis-menu-label">Estoques</label>
-			<ul class="sis-menu-list" style="display: none;">
-				<li><a href="${pageContext.request.contextPath}/list-estoque" class="sis-list-item">listar</a></
-				<li><a href="${pageContext.request.contextPath}/persist-estoque" class="sis-list-item">inserir</a></li>
-			</ul>
-		</div>
-		<div class="sis-menu-container col-md-3 col-sm-12">
-			<label class="sis-menu-label">Fornecedores</label>
-			<ul class="sis-menu-list" style="display: none;">
-				<li><a href="${pageContext.request.contextPath}/list-fornecedores" class="sis-list-item">listar</a></li>
-				<li><a href="${pageContext.request.contextPath}/pages/fornecedores/persist-fornecedor.jsp" class="sis-list-item">inserir</a></li>
-			</ul>
-		</div>
-		</div>
-	</div>
-	<div class="sis-container-content col-md-12">
-		<h3 class="sis-title col-md-12">Listagem de Fornecedores</h3>
-	</div>
-	<div class="sis-container-content col-md-12">
-		<table>
-			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Localizacao</th>
-				<th>Tipo de Fornecimento</th>
-			</tr>
-			<c:forEach items="${jspFornecedores}" var="fornecedor">
-				<tr>
-					<td><c:out value="${fornecedor.id}" /></td>
-					<td><c:out value="${fornecedor.nome}" /></td>
-					<td><c:out value="${fornecedor.localizacao}" /></td>
-					<c:if test="${fornecedor.tipoFornecimento == 1}">
-						<td>Alimenticio</td>
-					</c:if>
-					<c:if test="${fornecedor.tipoFornecimento == 2}">
-						<td>Limpeza</td>
-					</c:if>
-					<c:if test="${fornecedor.tipoFornecimento == 3}">
-						<td>Cosmeticos</td>
-					</c:if>
-					<c:if test="${fornecedor.tipoFornecimento == 4}">
-						<td>Pet</td>
-					</c:if>
-					<c:if test="${fornecedor.tipoFornecimento == 5}">
-						<td>Diversos</td>
-					</c:if>
-					<td><a
-						href="${pageContext.request.contextPath}/list-fornecedor-byid?id=${fornecedor.id}">Alterar</a></td>
-					<td><a
-						href="${pageContext.request.contextPath}/delete-fornecedor?id=${fornecedor.id}">Excluir</a></td>
-				</tr>
-			</c:forEach>
-		</table>
+		</header>
+		<main>
+			<%!private String difTipos(int id) {
+				if (id == TipoProduto.ALIMENTICIO.getCod())
+					return TipoProduto.ALIMENTICIO.getNome();
 
-		<div>
-			<resp:out value="${mensagem}" />
-		</div>
-	</div>
-</body>
+				else if (id == TipoProduto.COSMETICOS.getCod())
+					return TipoProduto.COSMETICOS.getNome();
+
+				else if (id == TipoProduto.DIVERSOS.getCod())
+					return TipoProduto.DIVERSOS.getNome();
+
+				else if (id == TipoProduto.LIMPEZA.getCod())
+					return TipoProduto.LIMPEZA.getNome();
+
+				else
+					return TipoProduto.PET.getNome();
+
+			}%>
+			<div class="sis-center-content">
+				<div class="sis-content-block">
+					<h3 class="sis-title">
+						<span class="sis-forward-arrow-svg"></span>
+						Listagem de Fornecedores
+					</h3>
+					<table>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Localizacao</th>
+							<th>Tipo de Fornecimento</th>
+						</tr>
+						<c:forEach items="${jspFornecedores}" var="fornecedor">
+							<tr>
+								<td class="sis-tabledata-id"><c:out value="${fornecedor.id}" /></td>
+								<td class="sis-tabledata-name"><c:out value="${fornecedor.nome}" /></td>
+								<td class="sis-tabledata-description"><c:out value="${fornecedor.localizacao}" /></td>
+								<c:if test="${fornecedor.tipoFornecimento == 1}">
+									<td class="sis-tabledata-name">Alimenticio</td>
+								</c:if>
+								<c:if test="${fornecedor.tipoFornecimento == 2}">
+									<td class="sis-tabledata-name">Limpeza</td>
+								</c:if>
+								<c:if test="${fornecedor.tipoFornecimento == 3}">
+									<td class="sis-tabledata-name">Cosmeticos</td>
+								</c:if>
+								<c:if test="${fornecedor.tipoFornecimento == 4}">
+									<td class="sis-tabledata-name">Pet</td>
+								</c:if>
+								<c:if test="${fornecedor.tipoFornecimento == 5}">
+									<td class="sis-tabledata-name">Diversos</td>
+								</c:if>
+								<td class="sis-tabledata-button"><a href="${pageContext.request.contextPath}/list-fornecedor-byid?id=${fornecedor.id}">Alterar</a></td>
+								<td class="sis-tabledata-button"><a href="${pageContext.request.contextPath}/delete-fornecedor?id=${fornecedor.id}">Excluir</a></td>
+							</tr>
+						</c:forEach>
+					</table>
+					<span class="sis-return-msg">
+						<resp:out value="${mensagem}" />
+					</span>
+				</div>
+			</div>	
+		</main>
+		<footer>
+			<div class="sis-footer-content">
+				<p class="sis-copyright">
+					Copyright (c) 2020 Tuncat. All rights reserved. Github Project: 
+					<a href="https://github.com/HunnTeRUS/projetoUnicidMercado">
+						ProjetoUnicidMercado
+					</a>
+				</p>
+			</div>
+		</footer>
+	</body>
 </html>

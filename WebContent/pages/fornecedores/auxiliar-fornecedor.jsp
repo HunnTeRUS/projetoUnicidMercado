@@ -1,69 +1,77 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 <%@ taglib prefix="resp" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Name       : TwoColours 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20130811
-
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link
-	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="${pageContext.request.contextPath}/fonts.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-
-</head>
-<body>
-	<div id="header">
-		<div id="menu" class="container">
-			<ul>
-				<li class="current_page_item"><a href="#" accesskey="1"
-					title="">Homepage</a></li>
-				<li><a href="#" accesskey="2" title="">Categorias</a></li>
-				<li><a href="#" accesskey="3" title="">Fornecedores</a></li>
-				<li><a href="#" accesskey="4" title="">Produtos</a></li>
-			</ul>
-		</div>
-	</div>
-	<div id="logo" class="container">
-		<h1>
-			<a href="#" class="icon icon-info-sign"><span>Informações - Fornecedores</span></a>
-		</h1>
-	</div>
-	<div id="page" class="container">
-		<div>
-			<h5 href="#" class="title"><span><resp:out value="${mensagem}" /></span></h5>
-		</div>
-		<br/>
-		<div class="center">
-			<a class="button" href="${pageContext.request.contextPath}/list-fornecedores">Voltar</a>
-		</div>
-	</div>
-
-
-	<div id="copyright" class="container">
-		<p>
-			Copyright (c) 2020 Tuncat. All rights reserved. Github Project: <a
-				href="https://github.com/HunnTeRUS/projetoUnicidMercado">ProjetoUnicidMercado</a>.
-		</p>
-	</div>
-</body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/colors.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/keyframes.css" />
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/mainstyle.css" />
+		<title>Informações Fornecedor</title>
+	</head>
+	<body>
+		<header>
+			<div class="sis-menu-container">
+				<div class="sis-dropdown-container">
+					<a href="${pageContext.request.contextPath}/">
+						<button class="sis-dropdown-button">Home</button>
+					</a>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Categorias</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/pages/categorias/persist-categoria.jsp">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-categorias">listar</a></li>
+					</ul>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Estoques</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/persist-estoque">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-estoque">listar</a></li>
+					</ul>
+				</div>
+				<div class="sis-dropdown-container">
+					<button class="sis-dropdown-button">Fornecedores</button>
+					<ul class="sis-dropdown-list">
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/pages/fornecedores/persist-fornecedor.jsp">incluir</a></li>
+						<li class="sis-dropdown-item"><a href="${pageContext.request.contextPath}/list-fornecedores">listar</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div class="sis-center-content">
+				<div class="sis-block-content">
+					<h3 class="sis-title">
+						<span class="sis-forward-arrow-svg"></span>
+						Informações - Fornecedores
+					</h3>
+					<div class="sis-info">		
+						<span class="sis-return-msg">
+							<resp:out value="${mensagem}" />
+						</span>
+						<a class="sis-goback-button" href="${pageContext.request.contextPath}/list-fornecedores">Voltar</a>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="sis-footer-content">
+				<p class="sis-copyright">
+					Copyright (c) 2020 Tuncat. All rights reserved. Github Project: 
+					<a href="https://github.com/HunnTeRUS/projetoUnicidMercado">
+						ProjetoUnicidMercado
+					</a>
+				</p>
+			</div>
+		</footer>
+	</body>
 </html>
