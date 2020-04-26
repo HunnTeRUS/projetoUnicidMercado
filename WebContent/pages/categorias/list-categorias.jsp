@@ -61,6 +61,15 @@
 							<th>Produtos</th>
 						</tr>
 						<c:forEach items="${jspCategorias}" var="categorias">
+								<c:if test="${!(categorias.listProdutos eq null)}">
+									<tr>
+										<td class="sis-tabledata-id"><c:out value="${categorias.id}" /></td>
+										<td class="sis-tabledata-name"><c:out value="${categorias.nome}" /></td>
+										<td class="sis-tabledata-name">---</td>
+										<td class="sis-tabledata-button"><a href="${pageContext.request.contextPath}/list-categorias-byid?id=${categorias.id}">Alterar</a></td>
+										<td class="sis-tabledata-button"><a href="${pageContext.request.contextPath}/delete-categorias?id=${categorias.id}">Excluir</a></td>
+									</tr>
+								</c:if>
 							<c:forEach items="${categorias.listProdutos}" var="produtos">
 								<tr>
 									<td class="sis-tabledata-id"><c:out value="${categorias.id}" /></td>

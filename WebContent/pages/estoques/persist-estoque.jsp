@@ -64,7 +64,7 @@
 							<input type="text" name="descricao" id="descricao" required />
 							<div class="sis-center-content left">
 								<label for="preco">Preço do Produto</label>
-								<input type="number" name="preco" id="preco" required />
+								<input type="number" max="9999.99" min="0" step="0.010" name="preco" id="preco" required />
 								<label for="quantidade">Qtd</label>
 								<input type="number" name="quantidade" id="quantidade" required />
 							</div>
@@ -90,7 +90,7 @@
 							</div>
 							<div class="sis-center-content left">
 								<input type="submit" value="Cadastrar" />
-								<input type="reset" value="Limpar" />
+								<input type="reset" value="Limpar"/>
 							</div>
 							<span class="sis-return-msg">
 								<resp:out value="${mensagem}" />
