@@ -61,7 +61,7 @@
 								<label for="nome">Nome</label>
 								<input type="text" name="nome" id="nome" value="${fornecedores.nome}" required />
 								<label for="localizacao">Localização</label>
-								<input type="text" name="localizacao" id="localizacao" value="${fornecedores.nome}" required />
+								<input type="text" name="localizacao" id="localizacao" value="${fornecedores.localizacao}" required />
 								<label for="tipoFornecimento">Tipo Fornecimento</label>
 								<select name="tipoFornecimento">
 									<option value="1">Alimenticio</option>

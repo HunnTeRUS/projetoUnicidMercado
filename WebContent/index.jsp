@@ -120,7 +120,7 @@
 								Acesse a listagem dos fornecedores atuais, exclusão, alteração
 								e inserção. Cada um com seu tipo de fornecimento!
 							</p>
-							<a class="sis-acess-button" href="">Veja Mais</a>
+							<a class="sis-acess-button" href="${pageContext.request.contextPath}/list-fornecedores">Veja Mais</a>
 						</div>
 						<div class="sis-column">
 							<img class="sis-moderate-img" src="./assets/images/category.png" />
@@ -128,7 +128,7 @@
 								Listagem de categorias e dentro delas, seus produtos. Liste
 								insira, exclua ou altere categorias como quiser.
 							</p>
-							<a class="sis-acess-button" href="">Veja Mais</a>
+							<a class="sis-acess-button" href="${pageContext.request.contextPath}/list-categorias">Veja Mais</a>
 						</div>
 						<div class="sis-column">
 							<img class="sis-moderate-img" src="./assets/images/products.png" />
@@ -136,7 +136,7 @@
 								Todos os seus produtos, cada um com a sua respectiva categoria e
 								fornecedor. Teste também suas funcionalidades!
 							</p>
-							<a class="sis-acess-button" href="">Veja Mais</a>
+							<a class="sis-acess-button" href="${pageContext.request.contextPath}/list-estoque">Veja Mais</a>
 						</div>
 						<div class="sis-column">
 							<img class="sis-moderate-img" src="./assets/images/docs.png" />
@@ -144,7 +144,7 @@
 								Acesse a nossa documentação, se preferir. Nela estão listadas
 								todas as funcionalidades e recursos.
 							</p>
-							<a class="sis-acess-button" href="">Veja Mais</a>
+							<a class="sis-acess-button" href="https://drive.google.com/open?id=1Rgj-cQA6xcs1Uy9uzVt2FI-BC3zQcBJl" target="_blank">Veja Mais</a>
 						</div>
 					</div>
 				</div>
